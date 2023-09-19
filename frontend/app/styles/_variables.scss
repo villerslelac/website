@@ -1,16 +1,23 @@
 :root {
   --background: #fff;
+  --background-secondary: #f6f6f6;
   --divider: #ddd;
   --hover-tint: #f6f6f6;
 
   --color: #262626;
   --color-rgb: 38, 38, 38;
 
+  --color-light: #616161;
+  --color-rgb: 97, 97, 97;
+
   --inverted-color: #fff;
   --inverted-color-rgb: 255, 255, 255;
 
   --primary-color: #02366b;
   --primary-color-rgb: 2, 54, 107;
+
+  --primary-color-light: #0a58ca;
+  --primary-color-light-rgb: 10, 88, 202;
 
   --primary-color-hover: #0a58ca;
 

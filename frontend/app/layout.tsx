@@ -1,7 +1,7 @@
 import './styles/main.scss'
 import type { Metadata } from 'next'
 import { Yeseva_One } from 'next/font/google'
-import { Footer } from './components';
+import { Footer, Header } from './components';
 
 const yesevaOne = Yeseva_One({ subsets: ['latin'], weight: ['400'], variable: '--font-serif', });
 
@@ -18,6 +18,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className={yesevaOne.variable}>
+        <Header />
         {children}
         <Footer />
       </body>

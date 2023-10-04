@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import styles from './Header.module.scss'
 import clsx from 'clsx';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const items = [
   'Votre Mairie',
@@ -26,6 +28,7 @@ export const Header: React.FC = () => {
   const [activeItem, setActiveItem] = useState<number | null>(null);
   const [currentPos, setCurrentPos] = useState(0);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   const toggleMenu = () => {
     if (!open) {
@@ -48,10 +51,10 @@ export const Header: React.FC = () => {
   }
 
   return (
-    <header style={{ '--scroll-top': `-${currentPos}px` }}>
+    <header className={clsx(activeItem != null && styles.submenuOpen, pathname === '/' ? styles.homeHeader : styles.header)} style={{ '--scroll-top': `-${currentPos}px` }}>
       <nav className={clsx(open && styles.open, styles.navbar)}>
         <div className={styles.menu}>
-          <a href="/" className={styles.logo}></a>
+          <Link href="/" className={styles.logo} />
           <button
             className={styles.btn}
             onClick={toggleMenu}
@@ -68,11 +71,11 @@ export const Header: React.FC = () => {
                   <div className={styles.submenu}>
                     <div className={styles.submenuContent}>
                       <span className={styles.submenuTitle}>{item}</span>
-                      <a href="#" className={styles.submenuSeeMore}>Voir toute la rubrique</a>
+                      <Link href="#" className={styles.submenuSeeMore}>Voir toute la rubrique</Link>
                       <ul>
                         {subItems.map((item, idx) => (
                           <li key={idx}>
-                            <a href="#">{item}</a>
+                            <Link href="#">{item}</Link>
                           </li>
                         ))}
                       </ul>
@@ -83,20 +86,12 @@ export const Header: React.FC = () => {
             }
             return (
               <li key={idx}>
-                <a href="#">{item}</a>
+                <Link href="#">{item}</Link>
               </li>
             );
           })}
         </ul>
       </nav>
-      <div className={styles.headband}>
-        <ul className={styles.breadcrumb}>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Page</a></li>
-          <li>Page courante</li>
-        </ul>
-        <h1>Mon titre</h1>
-      </div>
     </header>
   );
 };

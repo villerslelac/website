@@ -1,80 +1,47 @@
-.headband {
-  display: flex;
-  overflow: hidden;
-  flex-direction: column;
-
-  position: relative;
-
-  margin: 1rem;
-  padding: 8rem 1rem 4rem;
-
-  border-radius: var(--headband-border-radius);
-
-  background-color: var(--primary-color);
-
-  color: var(--inverted-color);
-
-  align-items: center;
-  justify-content: center;
-
-  h1 {
-    font-family: var(--font-serif);
-    font-size: 2rem;
-
-    text-align: center;
+.home-header {
+  .logo {
+    background-image: url('/villers-le-lac-logo-white.svg');
   }
 
-  &:after {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
+  .open .logo {
+    background-image: url('/villers-le-lac-logo.svg');
 
-    height: 3rem;
+    &::before {
+      position: absolute;
+      z-index: -1;
+      top: -.75rem;
+      left: -1rem;
 
-    opacity: .35;
+      width: 7.5rem;
+      height: 7.5rem;
 
-    background-image: url('/pattern.svg');
-    background-repeat: repeat-x;
-    background-position: center;
+      background: url('/logo-background.png');
+      background-repeat: no-repeat;
+      background-size: 7.5rem 7.5rem;
 
-    content: '';
+      content: '';
+    }
   }
 }
 
-.breadcrumb {
-  margin: 0;
-  padding: 0;
+.header {
+  .logo {
+    background-image: url('/villers-le-lac-logo.svg');
 
-  font-size: .875rem;
-  font-style: italic;
+    &::before {
+      position: absolute;
+      z-index: -1;
+      top: -.75rem;
+      left: -1rem;
 
-  list-style: none;
+      width: 7.5rem;
+      height: 7.5rem;
 
-  li {
-    display: inline;
-    &:not(:last-of-type) {
-      margin-right: .5em;
-    }
-  }
+      background: url('/logo-background.png');
+      background-repeat: no-repeat;
+      background-size: 7.5rem 7.5rem;
 
-  li::after {
-    margin-left: .5em;
-
-    content: '»';
-  }
-
-  li:last-child::after {
-    content: '';
-  }
-
-  a {
-    color: inherit;
-
-    transition: all .4s ease-out;
-    text-decoration: none;
-    &:hover {
-      color: var(--accent-color);
+      content: '';
     }
   }
 }
@@ -117,24 +84,8 @@
   height: 5rem;
   margin-bottom: 1rem;
 
-  background-image: url('/villers-le-lac-logo.svg');
   background-repeat: no-repeat;
   background-size: 5rem 5rem;
-  &::before {
-    position: absolute;
-    z-index: -1;
-    top: -.75rem;
-    left: -1rem;
-
-    width: 7.5rem;
-    height: 7.5rem;
-
-    background: url('/logo-background.png');
-    background-repeat: no-repeat;
-    background-size: 7.5rem 7.5rem;
-
-    content: '';
-  }
 }
 
 // Menu button
@@ -371,27 +322,74 @@
   }
 }
 
-@media screen and (min-width: 768px) {
-  .headband {
-    padding: 9rem 1.5rem 5rem;
-    h1 {
-      font-size: 3rem;
+@media screen and (min-width: 992px) {
+  .home-header {
+    .items {
+      & > li > a,
+      & > li > a:hover {
+        color: var(--inverted-color);
+      }
     }
-    &:after {
-      height: 4rem;
+    .items {
+      width: 100%;
+      margin-right: 2rem;
+      margin-left: 14rem;
+      padding-right: 0;
+
+      border-bottom: 1px solid var(--inverted-color);
+    }
+
+    .expandable-item {
+      & > a::after,
+      & > a:hover::after {
+        content: url('data:image/svg+xml; utf8, <svg xmlns=\'http://www.w3.org/2000/svg\' height=\'24px\' viewBox=\'0 0 24 24\' width=\'24px\' fill=\'%23fff\'><path d=\'M24 24H0V0h24v24z\' fill=\'none\' opacity=\'.87\'/><path d=\'M15.88 9.29L12 13.17 8.12 9.29c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41-.39-.38-1.03-.39-1.42 0z\'/></svg>');
+      }
+    }
+
+    &.submenu-open .expandable-item {
+      & > a::after {
+        content: url('data:image/svg+xml; utf8, <svg xmlns=\'http://www.w3.org/2000/svg\' height=\'24px\' viewBox=\'0 0 24 24\' width=\'24px\' fill=\'%23262626\'><path d=\'M24 24H0V0h24v24z\' fill=\'none\' opacity=\'.87\'/><path d=\'M15.88 9.29L12 13.17 8.12 9.29c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41-.39-.38-1.03-.39-1.42 0z\'/></svg>');
+      }
+      & > a:hover::after {
+        content: url('data:image/svg+xml; utf8, <svg xmlns=\'http://www.w3.org/2000/svg\' height=\'24px\' viewBox=\'0 0 24 24\' width=\'24px\' fill=\'%2302366b\'><path d=\'M24 24H0V0h24v24z\' fill=\'none\' opacity=\'.87\'/><path d=\'M15.88 9.29L12 13.17 8.12 9.29c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41-.39-.38-1.03-.39-1.42 0z\'/></svg>');
+      }
+    }
+
+    &.submenu-open {
+      .logo {
+        background-image: url('/villers-le-lac-logo.svg');
+      }
+
+      .items {
+        & > li > a {
+          color: var(--color);
+          &:hover {
+            color: var(--primary-color);
+          }
+        }
+      }
     }
   }
-}
 
-@media screen and (min-width: 992px) {
-  .headband {
-    margin: 0 1.5rem 1.5rem;
+  .header {
+    .logo {
+      &::before {
+        top: -2rem;
+        left: -2rem;
+
+        width: 12rem;
+        height: 12rem;
+
+        background-size: 12rem 12rem;
+      }
+    }
   }
 
   .navbar {
     display: flex;
     flex-direction: row;
 
+    width: 100%;
     max-width: 1200px;
     height: 5rem;
     margin: 0 auto;
@@ -423,16 +421,6 @@
     margin: 0;
 
     background-size: 7.5rem 7.5rem;
-
-    &::before {
-      top: -2rem;
-      left: -2rem;
-
-      width: 12rem;
-      height: 12rem;
-
-      background-size: 12rem 12rem;
-    }
   }
 
   // Menu button
@@ -470,7 +458,8 @@
       border-top: none;
     }
 
-    & > li:hover > a:before {
+    & > li > a:hover:before,
+    & li.open > a::before {
       height: .25rem;
     }
 
@@ -508,7 +497,7 @@
   }
 
   .expandable-item {
-    &:hover > a::after {
+    & > a:hover::after {
       content: url('data:image/svg+xml; utf8, <svg xmlns=\'http://www.w3.org/2000/svg\' height=\'24px\' viewBox=\'0 0 24 24\' width=\'24px\' fill=\'%2302366b\'><path d=\'M24 24H0V0h24v24z\' fill=\'none\' opacity=\'.87\'/><path d=\'M15.88 9.29L12 13.17 8.12 9.29c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41-.39-.38-1.03-.39-1.42 0z\'/></svg>');
     }
 
@@ -606,18 +595,6 @@
     color: var(--primary-color);
 
     text-decoration: none;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .headband {
-    padding: 10rem 2rem 6rem;
-    h1 {
-      font-size: 4rem;
-    }
-    &:after {
-      height: 5rem;
-    }
   }
 }
 

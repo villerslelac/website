@@ -1,195 +1,122 @@
-.main {
+.video {
+  overflow: hidden;
+
+  position: relative;
+
+  width: 100%;
+  height: 100vh;
+
+  &:before {
+    display: block;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background: linear-gradient(0deg, rgba(var(--primary-color-rgb),.1) 0%, rgba(var(--primary-color-rgb),.8) 100%);
+    background-color: rgba(var(--primary-color-rgb),.3);
+
+    content: '';
+  }
+
+  video {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.container {
+  display: flex;
+
+  position: absolute;
+  top: 6rem;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100vh;
+
+  align-items: center;
+}
+
+.content {
   box-sizing: border-box;
   width: 100%;
-  max-width: 992px;
-  margin: 0 auto;
-  padding: 0 calc(1rem + var(--headband-border-radius));
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+}
 
-  flex: 1 1 auto;
+.title {
+  color: var(--inverted-color);
+  font-family: var(--font-serif);
+  font-size: 2.25rem;
+  line-height: 1em;
+  text-shadow: var(--text-shadow);
+  span {
+    padding-left: 1rem;
 
-  h1,
-  h2 {
-    position: relative;
-
-    margin-top: 0;
-    margin-bottom: 1rem;
-
-    font-family: var(--font-serif);
-    font-size: 1.875rem;
-    &:after {
-      display: block;
-
-      position: absolute;
-      top: 100%;
-      right: auto;
-      left: 0;
-
-      width: 4rem;
-      height: .25rem;
-      margin: .25em 0;
-
-      background-color: var(--accent-color);
-
-      content: '';
-      transform: translateY(-50%);
-    }
-  }
-
-  h3 {
-    margin-top: 0;
-    margin-bottom: .5rem;
-
-    color: var(--primary-color);
-    font-family: var(--font-serif);
-    font-size: 1.5rem;
-  }
-
-  h4,
-  h5,
-  h6 {
-    margin-top: 0;
-    margin-bottom: .5rem;
-
-    color: var(--primary-color);
-    font-weight: 700;
-  }
-
-  h4 {
-    font-size: 1.25rem;
-  }
-
-  h5 {
-    font-size: 1.125rem;
-  }
-
-  h6 {
-    font-size: 1rem;
-  }
-
-  p {
-    width: 100%;
-    margin-bottom: 1rem;
-
-    word-wrap: normal;
-  }
-
-  a {
-    display: inline-block;
-
-    color: var(--primary-color);
-
-    transition: all .4s ease-out;
-    &:hover {
-      color: var(--primary-color-hover);
-    }
-  }
-
-  ul {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    padding-left: 1.25rem;
-
-    list-style: disc;
-  }
-
-  ol {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    padding-left: 1.25rem;
-
-    list-style: decimal;
-  }
-
-  ol ul,
-  ul ul {
-    margin-bottom: 0;
-    padding-left: 1.5rem;
-
-    list-style: circle;
-  }
-
-  ol ol,
-  ul ol {
-    margin-bottom: 0;
-    padding-left: 1.5rem;
-
-    list-style: lower-alpha;
-  }
-
-  hr {
-    margin: 1rem 0;
-
-    border: 1px solid;
-    border-color: var(--divider);
-  }
-
-  img {
-    max-width: 100%;
-    margin-bottom: 1rem;
-
-    border-radius: 1rem;
+    font-family: var(--font-cursive);
+    font-size: 3rem;
+    font-weight: 400;
   }
 }
 
 @media screen and (min-width: 768px) {
-  .main {
-    h1,
-    h2 {
-      margin-bottom: 1.5rem;
 
-      font-size: 2.25rem;
-    }
+  .title {
+    font-size: 3rem;
+    span {
+      padding-left: 1.5rem;
 
-    h3 {
-      font-size: 1.875rem;
-    }
-
-    h4 {
-      font-size: 1.5rem;
-    }
-
-    h5 {
-      font-size: 1.25rem;
-    }
-
-    h6 {
-      font-size: 1.125rem;
+      font-size: 3.75rem;
     }
   }
 }
 
 @media screen and (min-width: 992px) {
-  .main {
-    padding: 0 calc(1.5rem + var(--headband-border-radius));
+  .content {
+    padding-left: 5rem;
+  }
+
+  .video {
+    margin-top: -5rem;
+  }
+
+  .title {
+    font-size: 3.75rem;
+    span {
+      padding-left: 2rem;
+
+      font-size: 4.5rem;
+    }
   }
 }
 
 @media screen and (min-width: 1200px) {
-  .main {
-    padding: 0;
+  .content {
+    padding-left: 2rem;
+  }
 
-    font-size: 1.125rem;
-    h1,
-    h2 {
-      margin-bottom: 2rem;
+  .title {
+    font-size: 4.5rem;
+    span {
+      padding-left: 2rem;
 
-      font-size: 3rem;
-    }
-
-    h3 {
-      font-size: 2.25rem;
-    }
-
-    h4 {
-      font-size: 1.875rem;
-    }
-
-    h5 {
-      font-size: 1.5rem;
-    }
-
-    h6 {
-      font-size: 1.25rem;
+      font-size: 6rem;
     }
   }
 }

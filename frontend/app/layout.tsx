@@ -1,8 +1,10 @@
 import './styles/main.scss'
 import type { Metadata } from 'next'
-import { Yeseva_One } from 'next/font/google'
+import { Great_Vibes, Yeseva_One } from 'next/font/google'
 import { Footer, Header } from './components';
+import clsx from 'clsx';
 
+const greatVibes = Great_Vibes({ subsets: ['latin'], weight: ['400'], variable: '--font-cursive', });
 const yesevaOne = Yeseva_One({ subsets: ['latin'], weight: ['400'], variable: '--font-serif', });
 
 export const metadata: Metadata = {
@@ -17,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
-      <body className={yesevaOne.variable}>
+      <body className={clsx(yesevaOne.variable, greatVibes.variable)}>
         <Header />
         {children}
         <Footer />

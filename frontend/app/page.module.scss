@@ -64,7 +64,7 @@
   color: var(--inverted-color);
   font-family: var(--font-serif);
   font-size: 2.25rem;
-  line-height: 1em;
+  line-height: 1.15em;
   text-shadow: var(--text-shadow);
   span {
     padding-left: 1rem;
@@ -75,14 +75,109 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+.shortcuts {
+  display: grid;
 
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem;
+
+  align-items: center;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+.shortcut {
+  padding: 1rem 0;
+
+  color: var(--primary-color);
+
+  text-align: center;
+  text-decoration: none;
+
+  &:hover {
+    color: var(--primary-color-hover);
+    svg {
+      fill: var(--primary-color-hover);
+    }
+  }
+
+  svg {
+    width: 3rem;
+    height: 3rem;
+
+    fill: var(--primary-color);
+    flex-shrink: 0;
+  }
+
+  &-title {
+    position: relative;
+
+    padding-top: 1rem;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+    &::after {
+      display: block;
+
+      position: absolute;
+      top: 1.5px;
+      left: calc(50% - 2rem);
+
+      width: 4rem;
+      height: 3px;
+
+      background-color: var(--accent-color);
+
+      content: '';
+    }
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .shortcuts {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 768px) {
   .title {
     font-size: 3rem;
+    line-height: 1.05em;
     span {
       padding-left: 1.5rem;
 
       font-size: 3.75rem;
+    }
+  }
+
+  .shortcuts {
+    padding: 1.5rem;
+
+    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: left;
+  }
+
+  .shortcut {
+    display: flex;
+    flex-direction: row;
+
+    padding: 1.5rem 0;
+
+    align-items: center;
+    &-title {
+      padding-left: 1.5rem;
+
+      text-align: left;
+      &::after {
+        left: 1.5rem;
+      }
     }
   }
 }
@@ -98,11 +193,18 @@
 
   .title {
     font-size: 3.75rem;
+    line-height: 1.02em;
     span {
       padding-left: 2rem;
 
       font-size: 4.5rem;
     }
+  }
+
+  .shortcuts {
+    padding: 2rem;
+
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 
@@ -113,6 +215,7 @@
 
   .title {
     font-size: 4.5rem;
+    line-height: 1.12em;
     span {
       padding-left: 2rem;
 

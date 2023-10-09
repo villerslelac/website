@@ -75,6 +75,8 @@
   }
 }
 
+// Shortcuts
+
 .shortcuts {
   display: grid;
 
@@ -139,7 +141,84 @@
   }
 }
 
+// Contact
+
+.contact {
+  display: flex;
+  flex-direction: row;
+
+  position: relative;
+
+  margin: 1rem 0 1rem 1rem;
+  padding: 1.5rem;
+
+  border-top-left-radius: 2rem;
+
+  background-color: var(--primary-color);
+
+  align-items: center;
+  gap: 1rem;
+  justify-content: left;
+
+  &-icon {
+    position: relative;
+
+    width: 4.5rem;
+    height: 3rem;
+    svg {
+      width: 3rem;
+      height: 3rem;
+      margin-left: 1.5rem;
+
+      fill: var(--inverted-color);
+    }
+    &:before {
+      display: block;
+
+      position: absolute;
+
+      width: 3rem;
+      height: 3rem;
+
+      border-radius: 50%;
+
+      background-color: rgba(255, 255, 255, 10%);
+
+      content: '';
+    }
+  }
+
+  &-link {
+    color: var(--inverted-color);
+    font-style: italic;
+
+    text-decoration: none;
+
+    span {
+      font-weight: 700;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &::before {
+    position: absolute;
+    right: 0;
+    bottom: .5rem;
+
+    width: 5.25rem;
+    height: 8.75rem;
+
+    background-image: radial-gradient(circle at 1rem 1rem, var(--accent-color) 2.5px, transparent 3.5px);
+    background-size: 1.75rem 1.75rem;
+
+    content: '';
+  }
+}
+
 @media screen and (min-width: 576px) {
+  // Shortcuts
+
   .shortcuts {
     grid-template-columns: 1fr 1fr;
   }
@@ -155,6 +234,8 @@
       font-size: 3.75rem;
     }
   }
+
+  // Shortcuts
 
   .shortcuts {
     padding: 1.5rem;
@@ -180,6 +261,18 @@
       }
     }
   }
+
+  // Contact
+
+  .contact {
+    position: relative;
+
+    margin: 1.5rem 0 1.5rem 1.5rem;
+    padding: 2rem;
+    &::before {
+      height: 10.5rem;
+    }
+  }
 }
 
 @media screen and (min-width: 992px) {
@@ -201,10 +294,38 @@
     }
   }
 
+  // Shortcuts
+
   .shortcuts {
     padding: 2rem;
 
     grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  // Contact
+
+  .contact {
+    position: relative;
+
+    margin: 1.5rem 0 5.25rem 40%;
+    padding: 2rem;
+    &::before {
+      width: 7rem;
+      height: 10.5rem;
+    }
+    &::after {
+      position: absolute;
+      top: 5.25rem;
+      left: 3.5rem;
+
+      width: 8.75rem;
+      height: 7rem;
+
+      background-image: radial-gradient(circle at 1rem 1rem, var(--accent-color) 2.5px, transparent 3.5px);
+      background-size: 1.75rem 1.75rem;
+
+      content: '';
+    }
   }
 }
 
@@ -221,5 +342,13 @@
 
       font-size: 6rem;
     }
+  }
+
+  // Contact
+
+  .contact {
+    position: relative;
+
+    margin: 1.5rem 0 5.25rem 50%;
   }
 }

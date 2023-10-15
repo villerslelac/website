@@ -30,6 +30,8 @@
 
       background-color: var(--accent-color);
 
+      font-weight: 600;
+
       content: '';
       transform: translateY(-50%);
     }
@@ -42,6 +44,7 @@
     color: var(--primary-color);
     font-family: var(--font-serif);
     font-size: 1.5rem;
+    font-weight: 600;
   }
 
   h4,

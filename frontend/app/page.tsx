@@ -1,5 +1,7 @@
 'use client'
 
+import Link from 'next/link'
+import { Article } from './components'
 import styles from './page.module.scss'
 
 export default function Home() {
@@ -47,6 +49,18 @@ export default function Home() {
             <span>Une question ?</span><br/>
             Contacter la mairie
           </a>
+        </div>
+      </section>
+      <section className={styles.section}>
+        <h2 className={styles.subtitle}>Actualités</h2>
+        <div className={styles.articles}>
+          <Article size="lg" className={styles.inTheNews}/>
+          <Article />
+          <Article />
+          <Article />
+        </div>
+        <div className={styles.articlesBtnContainer}>
+          <Link href="#" className={styles.button}>Toute l&apos;actualité</Link>
         </div>
       </section>
     </main>

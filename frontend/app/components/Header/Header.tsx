@@ -1,16 +1,18 @@
-'use client'
+'use client';
 
 import { useState } from 'react';
-import styles from './Header.module.scss'
+
 import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+
+import styles from './Header.module.scss';
 
 const items = [
   'Votre Mairie',
   'Vos démarches',
   'Vivre à Villers',
-  'Découvrir Villers-le-Lac'
+  'Découvrir Villers-le-Lac',
 ];
 
 const subItems = [
@@ -21,7 +23,7 @@ const subItems = [
   'Séances du Conseil municipal',
   'Bulletins municipaux',
   'Marchés publics',
-  'Offres d\'emploi'
+  "Offres d'emploi",
 ];
 
 export const Header: React.FC = () => {
@@ -39,8 +41,8 @@ export const Header: React.FC = () => {
       document.body.classList.remove('no-scroll');
       setActiveItem(null);
     }
-    setOpen(!open)
-  }
+    setOpen(!open);
+  };
 
   const toggleItem = (idx: number) => {
     if (activeItem != idx) {
@@ -48,17 +50,20 @@ export const Header: React.FC = () => {
     } else {
       setActiveItem(null);
     }
-  }
+  };
 
   return (
-    <header className={clsx(activeItem != null && styles.submenuOpen, pathname === '/' ? styles.homeHeader : styles.header)} style={{ '--scroll-top': `-${currentPos}px` }}>
+    <header
+      className={clsx(
+        activeItem != null && styles.submenuOpen,
+        pathname === '/' ? styles.homeHeader : styles.header,
+      )}
+      style={{ '--scroll-top': `-${currentPos}px` }}
+    >
       <nav className={clsx(open && styles.open, styles.navbar)}>
         <div className={styles.menu}>
           <Link href="/" className={styles.logo} />
-          <button
-            className={styles.btn}
-            onClick={toggleMenu}
-          >
+          <button className={styles.btn} onClick={toggleMenu}>
             <span className={styles.btnBurger} />
           </button>
         </div>
@@ -66,12 +71,28 @@ export const Header: React.FC = () => {
           {items.map((item, idx) => {
             if (idx == 0) {
               return (
-                <li key={idx} className={clsx(idx == activeItem && styles.open, styles.expandableItem)}>
-                  <a href="javascript:void(0)" onClick={(e) => { e.stopPropagation(); toggleItem(idx) }}>{item}</a>
+                <li
+                  key={idx}
+                  className={clsx(
+                    idx == activeItem && styles.open,
+                    styles.expandableItem,
+                  )}
+                >
+                  <a
+                    href="javascript:void(0)"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleItem(idx);
+                    }}
+                  >
+                    {item}
+                  </a>
                   <div className={styles.submenu}>
                     <div className={styles.submenuContent}>
                       <span className={styles.submenuTitle}>{item}</span>
-                      <Link href="#" className={styles.submenuSeeMore}>Voir toute la rubrique</Link>
+                      <Link href="#" className={styles.submenuSeeMore}>
+                        Voir toute la rubrique
+                      </Link>
                       <ul>
                         {subItems.map((item, idx) => (
                           <li key={idx}>

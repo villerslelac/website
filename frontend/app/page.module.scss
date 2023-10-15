@@ -15,8 +15,12 @@
     bottom: 0;
     left: 0;
 
-    background: linear-gradient(0deg, rgba(var(--primary-color-rgb),.1) 0%, rgba(var(--primary-color-rgb),.8) 100%);
-    background-color: rgba(var(--primary-color-rgb),.3);
+    background: linear-gradient(
+      0deg,
+      rgba(var(--primary-color-rgb), 0.1) 0%,
+      rgba(var(--primary-color-rgb), 0.8) 100%
+    );
+    background-color: rgba(var(--primary-color-rgb), 0.3);
 
     content: '';
   }
@@ -204,12 +208,16 @@
   &::before {
     position: absolute;
     right: 0;
-    bottom: .5rem;
+    bottom: 0.5rem;
 
     width: 5.25rem;
     height: 8.75rem;
 
-    background-image: radial-gradient(circle at 1rem 1rem, var(--accent-color) 2.5px, transparent 3.5px);
+    background-image: radial-gradient(
+      circle at 1rem 1rem,
+      var(--accent-color) 2.5px,
+      transparent 3.5px
+    );
     background-size: 1.75rem 1.75rem;
 
     content: '';
@@ -249,8 +257,8 @@
     left: 0;
 
     width: 4rem;
-    height: .25rem;
-    margin: .25em 0;
+    height: 0.25rem;
+    margin: 0.25em 0;
 
     background-color: var(--accent-color);
 
@@ -285,14 +293,14 @@
 
   position: relative;
 
-  padding: .5rem 1.5rem;
+  padding: 0.5rem 1.5rem;
 
   border-radius: 2em;
 
   color: var(--inverted-color);
   font-weight: 600;
 
-  transition: all .4s ease-out;
+  transition: all 0.4s ease-out;
   text-decoration: none;
   &:before {
     display: block;
@@ -304,7 +312,7 @@
     bottom: 0;
     left: 0;
 
-    background-color: rgba(var(--primary-color-light-rgb), .1);
+    background-color: rgba(var(--primary-color-light-rgb), 0.1);
 
     content: '';
   }
@@ -324,7 +332,7 @@
 
     content: '';
     cursor: pointer;
-    animation: buttonUnhoverMask .4s steps(29) forwards;
+    animation: buttonUnhoverMask 0.4s steps(29) forwards;
 
     mask: url(/urban-sprite.png);
     mask-size: auto;
@@ -335,7 +343,7 @@
 .button:hover {
   color: var(--primary-color);
   &:after {
-    animation: buttonHoverMask .7s steps(29) forwards;
+    animation: buttonHoverMask 0.7s steps(29) forwards;
   }
 }
 
@@ -470,7 +478,11 @@
       width: 8.75rem;
       height: 7rem;
 
-      background-image: radial-gradient(circle at 1rem 1rem, var(--accent-color) 2.5px, transparent 3.5px);
+      background-image: radial-gradient(
+        circle at 1rem 1rem,
+        var(--accent-color) 2.5px,
+        transparent 3.5px
+      );
       background-size: 1.75rem 1.75rem;
 
       content: '';

@@ -1,6 +1,11 @@
 @charset 'UTF-8';
 
 // 1. Libraries
+@import '@material-symbols/font-400';
+
+.material-symbols-rounded {
+  font-variation-settings: 'FILL' 0;
+}
 
 // 2. Vendors
 @import 'css-reset';

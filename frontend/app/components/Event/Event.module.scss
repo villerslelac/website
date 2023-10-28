@@ -1,0 +1,165 @@
+.image-link {
+  text-decoration: none;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.date {
+  display: flex;
+  flex-direction: column;
+
+  width: 4.75rem;
+  height: 5rem;
+
+  border-radius: var(--card-border-radius);
+
+  background-color: var(--primary-color);
+
+  color: var(--inverted-color);
+  font-weight: 500;
+
+  text-align: center;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.date-day {
+  margin: -0.5rem 0;
+
+  font-size: 1.5rem;
+}
+
+.date-month {
+  font-size: 1rem;
+}
+
+.content {
+  color: var(--color);
+
+  text-decoration: none;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+}
+
+.excerpt {
+  display: none;
+}
+
+.meta {
+  color: var(--color-light);
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+
+  vertical-align: bottom;
+
+  fill: var(--accent-color);
+}
+
+// Large event
+
+.large-event {
+  overflow: hidden;
+
+  position: relative;
+
+  border: 1px solid var(--border);
+  border-radius: var(--card-border-radius);
+
+  .image-link {
+    display: flex;
+  }
+
+  .date {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+  }
+
+  .content {
+    display: block;
+
+    padding: 1rem;
+  }
+  &:hover .content {
+    color: var(--color-light);
+  }
+
+  .title {
+    font-size: 1.875rem;
+  }
+}
+
+// Event
+
+.event {
+  display: flex;
+  overflow: hidden;
+  flex-direction: row;
+
+  .image-link {
+    flex-shrink: 0;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+
+    padding: 0 1rem;
+
+    flex: 1;
+    justify-content: center;
+  }
+
+  &:hover .content {
+    color: var(--color-light);
+  }
+
+  .title {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .large-event {
+    display: flex;
+    flex-direction: row;
+
+    .image-link {
+      flex: 1 0 50%;
+    }
+
+    .content {
+      display: block;
+
+      box-sizing: border-box;
+      width: 100%;
+
+      flex: 1 0 50%;
+    }
+
+    .title {
+      margin-bottom: 1rem;
+    }
+
+    .excerpt {
+      display: block;
+
+      margin-bottom: 1rem;
+    }
+  }
+}

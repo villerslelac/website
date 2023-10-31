@@ -4,7 +4,7 @@ import TrendingFlat from '@material-symbols/svg-400/rounded/trending_flat.svg';
 import clsx from 'clsx';
 import Link from 'next/link';
 
-import { Article, Event } from './components';
+import { Article, Button, Event, TourismCard } from './components';
 import styles from './page.module.scss';
 
 export default function Home() {
@@ -78,9 +78,9 @@ export default function Home() {
           <Article />
         </div>
         <div className={styles.articlesBtnContainer}>
-          <Link href="#" className={styles.button}>
+          <Button as={Link} href="#">
             Toute l&apos;actualité
-          </Link>
+          </Button>
         </div>
       </section>
       <section className={styles.section}>
@@ -99,10 +99,13 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.eventsBtnContainer}>
-          <Link href="#" className={styles.button}>
+          <Button as={Link} href="#">
             Tous les évènements
-          </Link>
+          </Button>
         </div>
+      </section>
+      <section className={styles.tourismContainer}>
+        <TourismCard />
       </section>
     </main>
   );

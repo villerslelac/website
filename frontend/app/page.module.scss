@@ -271,84 +271,6 @@
   }
 }
 
-@keyframes buttonHoverMask {
-  from {
-    mask-position: 0 0;
-  }
-  to {
-    mask-position: 100% 0;
-  }
-}
-
-@keyframes buttonUnhoverMask {
-  from {
-    mask-position: 100% 0;
-  }
-  to {
-    mask-position: 0 0;
-  }
-}
-
-.button {
-  display: inline-block;
-  overflow: hidden;
-
-  position: relative;
-
-  padding: 0.5rem 1.5rem;
-
-  border-radius: 2em;
-
-  color: var(--inverted-color);
-  font-weight: 600;
-
-  transition: all 0.4s ease-out;
-  text-decoration: none;
-  &:before {
-    display: block;
-
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-
-    background-color: rgba(var(--primary-color-light-rgb), 0.1);
-
-    content: '';
-  }
-  &:after {
-    display: block;
-
-    position: absolute;
-    z-index: -1;
-    top: -1px;
-    right: -1px;
-    bottom: -1px;
-    left: -1px;
-
-    border: none;
-
-    background: var(--primary-color);
-
-    content: '';
-    cursor: pointer;
-    animation: buttonUnhoverMask 0.4s steps(29) forwards;
-
-    mask: url(/urban-sprite.png);
-    mask-size: auto;
-    mask-size: 3000% 100%;
-  }
-}
-
-.button:hover {
-  color: var(--primary-color);
-  &:after {
-    animation: buttonHoverMask 0.7s steps(29) forwards;
-  }
-}
-
 .articles-btn-container {
   padding: 1rem 0;
 
@@ -369,6 +291,13 @@
   padding: 1rem 0;
 
   text-align: center;
+}
+
+.tourism-container {
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
 @media screen and (min-width: 576px) {
@@ -457,6 +386,10 @@
 
   .events-btn-container {
     padding: 1.5rem 0;
+  }
+
+  .tourism-container {
+    padding: 1.5rem;
   }
 }
 
@@ -606,5 +539,9 @@
 
   .events-btn-container {
     padding: 2rem 0;
+  }
+
+  .tourism-container {
+    padding: 2rem;
   }
 }

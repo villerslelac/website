@@ -1,0 +1,172 @@
+.card {
+  overflow: hidden;
+
+  position: relative;
+
+  border-radius: 1rem;
+}
+
+.image {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center bottom;
+  }
+  &:after {
+    display: block;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    content: '';
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+
+  padding: 2rem 0;
+
+  gap: 2rem;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+
+  padding: 1rem 0;
+
+  gap: 1rem;
+}
+
+.link {
+  color: var(--inverted-color);
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-shadow: var(--text-shadow);
+
+  transition: all 0.4s cubic-bezier(0.14, 0.66, 0.28, 0.93);
+  text-align: right;
+  text-decoration: none;
+  text-transform: uppercase;
+  &:after {
+    display: inline-block;
+
+    width: 3.125em;
+    height: 0.1875em;
+    margin-left: 1em;
+
+    background-color: var(--inverted-color);
+
+    content: '';
+    vertical-align: middle;
+  }
+  &:hover {
+    color: var(--accent-color);
+    &:after {
+      width: 6rem;
+
+      background-color: var(--accent-color);
+    }
+  }
+}
+
+.title-container {
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 1rem;
+
+  color: var(--inverted-color);
+  font-family: var(--font-serif);
+  font-size: 2.25rem;
+  line-height: 1.15em;
+  text-shadow: var(--text-shadow);
+
+  text-align: center;
+  span {
+    padding-left: 1rem;
+
+    font-family: var(--font-cursive);
+    font-size: 3rem;
+    font-weight: 400;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .content {
+    padding: 3rem 0;
+
+    gap: 3rem;
+  }
+
+  .links {
+    padding: 1.5rem 0;
+
+    gap: 1.5rem;
+  }
+
+  .title-container {
+    padding: 0 1.5rem 0 2rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .content {
+    flex-direction: row;
+
+    align-items: end;
+    justify-content: space-between;
+  }
+
+  .title-container {
+    text-align: left;
+
+    order: -1;
+  }
+
+  .title {
+    text-align: left;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .content {
+    padding: 4rem 0;
+
+    gap: 4rem;
+  }
+  .title-container {
+    padding: 0 2rem 0 3rem;
+  }
+  .links {
+    padding: 2rem 0;
+
+    gap: 2rem;
+  }
+  .title {
+    font-size: 3.75rem;
+    line-height: 1.02em;
+    span {
+      padding-left: 2rem;
+
+      font-size: 4.5rem;
+    }
+  }
+}

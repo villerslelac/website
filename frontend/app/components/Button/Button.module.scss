@@ -1,0 +1,96 @@
+@keyframes buttonHoverMask {
+  from {
+    mask-position: 0 0;
+  }
+  to {
+    mask-position: 100% 0;
+  }
+}
+
+@keyframes buttonUnhoverMask {
+  from {
+    mask-position: 100% 0;
+  }
+  to {
+    mask-position: 0 0;
+  }
+}
+
+.button {
+  display: inline-block;
+  overflow: hidden;
+
+  position: relative;
+
+  padding: 0.5rem 1.5rem;
+
+  border-radius: 2em;
+
+  font-weight: 600;
+
+  transition: all 0.4s ease-out;
+  text-decoration: none;
+  &:before {
+    display: block;
+
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    content: '';
+  }
+  &:after {
+    display: block;
+
+    position: absolute;
+    z-index: -1;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+
+    border: none;
+
+    content: '';
+    cursor: pointer;
+    animation: buttonUnhoverMask 0.4s steps(29) forwards;
+
+    mask: url(/urban-sprite.png);
+    mask-size: auto;
+    mask-size: 3000% 100%;
+  }
+  &:hover:after {
+    animation: buttonHoverMask 0.7s steps(29) forwards;
+  }
+}
+
+.primary {
+  background-color: rgba(var(--primary-color-light-rgb), 0.1);
+
+  color: var(--inverted-color);
+  &::before {
+    background-color: var(--background);
+  }
+  &:after {
+    background: var(--primary-color);
+  }
+  &:hover {
+    color: var(--primary-color);
+  }
+}
+
+.secondary {
+  color: var(--color);
+  &::before {
+    background-color: var(--primary-color);
+  }
+  &:after {
+    background-color: var(--background);
+  }
+  &:hover {
+    color: var(--inverted-color);
+  }
+}

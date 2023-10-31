@@ -68,24 +68,24 @@
 }
 
 .primary {
-  background-color: rgba(var(--primary-color-light-rgb), 0.1);
+  background-color: rgba(var(--primary-light-rgb), 0.1);
 
   color: var(--inverted-color);
   &::before {
     background-color: var(--background);
   }
   &:after {
-    background: var(--primary-color);
+    background: var(--primary);
   }
   &:hover {
-    color: var(--primary-color);
+    color: var(--primary);
   }
 }
 
 .secondary {
   color: var(--color);
   &::before {
-    background-color: var(--primary-color);
+    background-color: var(--primary);
   }
   &:after {
     background-color: var(--background);

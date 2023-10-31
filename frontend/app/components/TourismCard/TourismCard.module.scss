@@ -77,11 +77,11 @@
     vertical-align: middle;
   }
   &:hover {
-    color: var(--accent-color);
+    color: var(--accent);
     &:after {
       width: 6rem;
 
-      background-color: var(--accent-color);
+      background-color: var(--accent);
     }
   }
 }

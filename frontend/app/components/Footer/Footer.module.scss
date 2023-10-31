@@ -12,9 +12,9 @@
 // Social links
 
 .social-links-wrapper {
-  border-bottom: 2px solid var(--primary-color);
+  border-bottom: 2px solid var(--primary);
 
-  background-color: rgba(var(--primary-color-light-rgb), 0.1);
+  background-color: rgba(var(--primary-light-rgb), 0.1);
 
   font-size: 1.25rem;
   font-weight: 700;
@@ -49,12 +49,12 @@
 
 .facebook,
 .youtube {
-  color: var(--primary-color);
+  color: var(--primary);
 
-  fill: var(--primary-color);
+  fill: var(--primary);
 
   &:hover {
-    fill: var(--primary-color-hover);
+    fill: var(--primary-hover);
   }
 }
 

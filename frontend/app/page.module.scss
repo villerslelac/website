@@ -17,10 +17,10 @@
 
     background: linear-gradient(
       0deg,
-      rgba(var(--primary-color-rgb), 0.1) 0%,
-      rgba(var(--primary-color-rgb), 0.8) 100%
+      rgba(var(--primary-rgb), 0.1) 0%,
+      rgba(var(--primary-rgb), 0.8) 100%
     );
-    background-color: rgba(var(--primary-color-rgb), 0.3);
+    background-color: rgba(var(--primary-rgb), 0.3);
 
     content: '';
   }
@@ -100,15 +100,15 @@
 .shortcut {
   padding: 1rem 0;
 
-  color: var(--primary-color);
+  color: var(--primary);
 
   text-align: center;
   text-decoration: none;
 
   &:hover {
-    color: var(--primary-color-hover);
+    color: var(--primary-hover);
     .icon {
-      color: var(--primary-color-hover);
+      color: var(--primary-hover);
     }
   }
 
@@ -116,7 +116,7 @@
     width: 3rem;
     height: 3rem;
 
-    color: var(--primary-color);
+    color: var(--primary);
     font-size: 3rem;
 
     flex-shrink: 0;
@@ -140,7 +140,7 @@
       width: 4rem;
       height: 3px;
 
-      background-color: var(--accent-color);
+      background-color: var(--accent);
 
       content: '';
     }
@@ -160,7 +160,7 @@
 
   border-top-left-radius: 2rem;
 
-  background-color: var(--primary-color);
+  background-color: var(--primary);
 
   align-items: center;
   gap: 1rem;
@@ -217,7 +217,7 @@
 
     background-image: radial-gradient(
       circle at 1rem 1rem,
-      var(--accent-color) 2.5px,
+      var(--accent) 2.5px,
       transparent 3.5px
     );
     background-size: 1.75rem 1.75rem;
@@ -262,7 +262,7 @@
     height: 0.25rem;
     margin: 0.25em 0;
 
-    background-color: var(--accent-color);
+    background-color: var(--accent);
 
     font-weight: 600;
 
@@ -450,7 +450,7 @@
 
       background-image: radial-gradient(
         circle at 1rem 1rem,
-        var(--accent-color) 2.5px,
+        var(--accent) 2.5px,
         transparent 3.5px
       );
       background-size: 1.75rem 1.75rem;

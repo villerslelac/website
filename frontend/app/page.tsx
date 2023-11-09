@@ -1,10 +1,16 @@
 'use client';
 
-import TrendingFlat from '@material-symbols/svg-400/rounded/trending_flat.svg';
+import NextIcon from '@material-symbols/svg-400/rounded/trending_flat.svg';
 import clsx from 'clsx';
 import Link from 'next/link';
 
-import { Article, Button, Event, TourismCard } from './components';
+import {
+  Article,
+  Button,
+  DiscoverCard,
+  Event,
+  TourismCard,
+} from './components';
 import styles from './page.module.scss';
 
 export default function Home() {
@@ -60,7 +66,7 @@ export default function Home() {
       <section>
         <div className={styles.contact}>
           <div className={styles.contactIcon}>
-            <TrendingFlat />
+            <NextIcon />
           </div>
           <a href="#" className={styles.contactLink}>
             <span>Une question ?</span>
@@ -106,6 +112,19 @@ export default function Home() {
       </section>
       <section className={styles.tourismContainer}>
         <TourismCard />
+      </section>
+      <section className={styles.discoverContainer}>
+        <h2 className={styles.discoverTitle}>
+          Découvrir
+          <br />
+          <span>Villers-le-Lac</span>
+        </h2>
+        <DiscoverCard />
+        <div className={styles.discoverBtnContainer}>
+          <Button as={Link} href="#">
+            Découvrir Villers-le-Lac
+          </Button>
+        </div>
       </section>
     </main>
   );

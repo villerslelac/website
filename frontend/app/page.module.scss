@@ -295,7 +295,7 @@
 
 .tourism-container {
   box-sizing: border-box;
-  max-width: 1200px;
+  max-width: calc(1600px + 2 * 2rem);
   margin: 0 auto;
   padding: 1rem;
 }
@@ -338,6 +338,14 @@
     line-height: 1.15em;
     text-shadow: none;
   }
+}
+
+// Map
+
+.interactive-map-container {
+  max-width: 1600px;
+  margin: auto;
+  padding: 1rem;
 }
 
 @media screen and (min-width: 576px) {
@@ -442,6 +450,12 @@
   // Discover
 
   .discover-container {
+    padding: 1.5rem;
+  }
+
+  // Map
+
+  .interactive-map-container {
     padding: 1.5rem;
   }
 }
@@ -609,5 +623,11 @@
 
       font-size: 3rem;
     }
+  }
+
+  // Map
+
+  .interactive-map-container {
+    padding: 2rem;
   }
 }

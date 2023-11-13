@@ -1,0 +1,93 @@
+.card {
+  overflow: hidden;
+
+  position: relative;
+
+  border-radius: 1rem;
+
+  background-color: var(--primary);
+  background-image: url('/map-background.jpg');
+  background-repeat: no-repeat;
+  background-position: center left;
+  background-size: auto 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+  max-width: 1200px;
+  min-height: 512px;
+  margin: auto;
+  padding: 1rem;
+
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.title {
+  position: relative;
+
+  margin-top: 0;
+  margin-bottom: 2rem;
+
+  color: var(--inverted-color);
+  font-family: var(--font-serif);
+  font-size: 1.875rem;
+  &:after {
+    display: block;
+
+    position: absolute;
+    top: 100%;
+    right: auto;
+    left: 0;
+
+    width: 4rem;
+    height: 0.25rem;
+    margin: 0.25em 0;
+
+    background-color: var(--accent);
+
+    font-weight: 600;
+
+    content: '';
+    transform: translateY(-50%);
+  }
+}
+
+.button {
+  z-index: 1;
+
+  box-shadow: var(--button-shadow);
+
+  align-self: center;
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    margin-bottom: 2.5rem;
+
+    font-size: 2.25rem;
+  }
+
+  .content {
+    padding: 1.5rem;
+  }
+
+  .button {
+    align-self: flex-end;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .title {
+    margin-bottom: 3rem;
+
+    font-size: 3rem;
+  }
+
+  .content {
+    padding: 2rem;
+  }
+}

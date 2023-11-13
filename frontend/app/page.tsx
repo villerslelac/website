@@ -9,6 +9,7 @@ import {
   Button,
   DiscoverCard,
   Event,
+  InteractiveMapCard,
   TourismCard,
 } from './components';
 import styles from './page.module.scss';
@@ -125,6 +126,9 @@ export default function Home() {
             Découvrir Villers-le-Lac
           </Button>
         </div>
+      </section>
+      <section className={styles.interactiveMapContainer}>
+        <InteractiveMapCard />
       </section>
     </main>
   );

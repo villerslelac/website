@@ -41,12 +41,7 @@ export const TourismCard: React.FC<TourismCardProps> = ({ className }) => {
             <br />
             <span>à Villers-le-Lac</span>
           </h2>
-          <Button
-            as={Link}
-            href="#"
-            variant="secondary"
-            className={styles.button}
-          >
+          <Button as={Link} href="#" variant="secondary">
             En savoir plus
           </Button>
         </div>

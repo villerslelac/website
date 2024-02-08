@@ -130,6 +130,20 @@ export default function Home() {
       <section className={styles.interactiveMapContainer}>
         <InteractiveMapCard />
       </section>
+      <section className={styles.footer}>
+        <div className={styles.footerContainer}>
+          <div className={styles.footerBackground} />
+          <div className={styles.footerContent}>
+            <h3 className={styles.subtitle}>Bon à savoir</h3>
+            <p>
+              En hiver, de nombreuses activités sportives nordiques sont
+              possibles : ski alpin, ski nordique, raquettes, … La commune est
+              dotée de pistes de ski alpin au lieu-dit « le Chauffaud » proche
+              du Meix Musy (1 287 m), mais également de ski de fond.
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

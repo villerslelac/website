@@ -348,11 +348,72 @@
   padding: 1rem;
 }
 
+// Footer
+
+.footer {
+  width: 100%;
+  margin-top: 1.5rem;
+
+  background-color: #4b76a0;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+
+  width: 100%;
+  max-width: 1920px;
+  margin: auto;
+
+  background-color: #4b76a0;
+}
+
+.footer-background {
+  width: 100%;
+  height: 100%;
+  height: 240px;
+  margin: auto;
+
+  background: url('/footer-background.jpg');
+  background-repeat: no-repeat;
+  background-position: -80px bottom;
+  background-size: contain;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+  z-index: 1;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  margin: auto;
+  padding: 2rem;
+
+  color: var(--inverted-color);
+
+  order: -1;
+}
+
 @media screen and (min-width: 576px) {
   // Shortcuts
 
   .shortcuts {
     grid-template-columns: 1fr 1fr;
+  }
+
+  // Footer
+
+  .footer-background {
+    height: 340px;
+
+    background-position: -160px bottom;
   }
 }
 
@@ -458,6 +519,22 @@
   .interactive-map-container {
     padding: 1.5rem;
   }
+
+  // Footer
+
+  .footer {
+    margin-top: 2rem;
+  }
+
+  .footer-background {
+    height: 440px;
+
+    background-position: -160px bottom;
+  }
+
+  .footer-content {
+    padding: 3rem;
+  }
 }
 
 @media screen and (min-width: 992px) {
@@ -550,6 +627,40 @@
   .discover-container {
     padding: 2rem;
   }
+
+  // Footer
+
+  .footer {
+    margin-top: 3rem;
+  }
+
+  .footer-container {
+    display: block;
+
+    height: calc(440px + 1rem);
+  }
+
+  .footer-background {
+    position: absolute;
+    top: 1rem;
+    left: -180px;
+
+    width: calc(100% + 160px);
+    height: 440px;
+
+    background-position: left bottom;
+  }
+
+  .footer-content {
+    padding: 1.5rem;
+
+    align-items: end;
+    justify-content: center;
+    h3,
+    p {
+      width: 400px;
+    }
+  }
 }
 
 @media screen and (min-width: 1200px) {
@@ -629,5 +740,27 @@
 
   .interactive-map-container {
     padding: 2rem;
+  }
+
+  .footer-content {
+    padding: 2rem;
+    h3,
+    p {
+      width: 520px;
+    }
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  // Footer
+
+  .footer-container {
+    display: block;
+
+    height: calc(540px + 1rem);
+  }
+
+  .footer-background {
+    height: 540px;
   }
 }

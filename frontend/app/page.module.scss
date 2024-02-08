@@ -17,10 +17,9 @@
 
     background: linear-gradient(
       0deg,
-      rgba(var(--primary-rgb), 0.1) 0%,
-      rgba(var(--primary-rgb), 0.8) 100%
+      rgba(0, 0, 0, 0.1) 25%,
+      rgba(0, 0, 0, 0.8) 100%
     );
-    background-color: rgba(var(--primary-rgb), 0.3);
 
     content: '';
   }

@@ -111,8 +111,8 @@ export default function Home() {
           </Button>
         </div>
       </section>
-      <section className={styles.tourismContainer}>
-        <TourismCard />
+      <section className={styles.interactiveMapContainer}>
+        <InteractiveMapCard />
       </section>
       <section className={styles.discoverContainer}>
         <h2 className={styles.discoverTitle}>
@@ -127,8 +127,8 @@ export default function Home() {
           </Button>
         </div>
       </section>
-      <section className={styles.interactiveMapContainer}>
-        <InteractiveMapCard />
+      <section className={styles.tourismContainer}>
+        <TourismCard />
       </section>
       <section className={styles.footer}>
         <div className={styles.footerContainer}>

@@ -1,8 +1,9 @@
 {
   "name": "website",
+  "packageManager": "pnpm@8.15.0",
   "version": "3.0.0",
   "private": true,
   "devDependencies": {
-    "husky": "^8.0.3"
+    "husky": "^9.0.10"
   }
 }

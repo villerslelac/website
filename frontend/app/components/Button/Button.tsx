@@ -1,13 +1,13 @@
 'use client';
 
-import React, { ForwardedRef } from 'react';
+import React, { ElementType } from 'react';
 
 import clsx from 'clsx';
 import Link from 'next/link';
 
 import styles from './Button.module.scss';
 
-interface AsProp<As extends React.ElementType = React.ElementType> {
+interface AsProp<As extends ElementType = ElementType> {
   as?: As;
   className?: string;
 }
@@ -25,7 +25,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         <Link
           {...rest}
           href={href}
-          ref={ref as ForwardedRef<HTMLAnchorElement>}
+          ref={ref as React.Ref<HTMLAnchorElement>}
           className={clsx(className, styles.button, styles[variant])}
         >
           {children}

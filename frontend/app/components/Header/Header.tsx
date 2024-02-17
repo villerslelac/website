@@ -8,25 +8,20 @@ import { usePathname } from 'next/navigation';
 
 import styles from './Header.module.scss';
 
-const items = [
-  'Votre Mairie',
-  'Vos démarches',
-  'Vivre à Villers',
-  'Découvrir Villers-le-Lac',
-];
+interface HeaderProps {
+  menu: {
+    items: {
+      label: string;
+      link: string;
+      items?: {
+        label: string;
+        link: string;
+      }[];
+    }[];
+  };
+}
 
-const subItems = [
-  'Équipe municipale',
-  'Employés municipaux',
-  'Organigramme des services',
-  'Services',
-  'Séances du Conseil municipal',
-  'Bulletins municipaux',
-  'Marchés publics',
-  "Offres d'emploi",
-];
-
-export const Header: React.FC = () => {
+export const Header: React.FC<HeaderProps> = ({ menu }) => {
   const [activeItem, setActiveItem] = useState<number | null>(null);
   const [currentPos, setCurrentPos] = useState(0);
   const [open, setOpen] = useState(false);
@@ -34,7 +29,6 @@ export const Header: React.FC = () => {
 
   const toggleMenu = () => {
     if (!open) {
-      console.log(window.scrollY);
       setCurrentPos(window.scrollY);
       document.body.classList.add('no-scroll');
     } else {
@@ -42,6 +36,12 @@ export const Header: React.FC = () => {
       setActiveItem(null);
     }
     setOpen(!open);
+  };
+
+  const handleClose = () => {
+    document.body.classList.remove('no-scroll');
+    setActiveItem(null);
+    setOpen(false);
   };
 
   const toggleItem = (idx: number) => {
@@ -58,18 +58,18 @@ export const Header: React.FC = () => {
         activeItem != null && styles.submenuOpen,
         pathname === '/' ? styles.homeHeader : styles.header,
       )}
-      style={{ '--scroll-top': `-${currentPos}px` }}
+      style={{ '--scroll-top': `-${currentPos}px` } as React.CSSProperties}
     >
       <nav className={clsx(open && styles.open, styles.navbar)}>
         <div className={styles.menu}>
-          <Link href="/" className={styles.logo} />
+          <Link href="/" onClick={handleClose} className={styles.logo} />
           <button className={styles.btn} onClick={toggleMenu}>
             <span className={styles.btnBurger} />
           </button>
         </div>
         <ul className={styles.items}>
-          {items.map((item, idx) => {
-            if (idx == 0) {
+          {menu.items.map(({ label, link, items: subItems }, idx) => {
+            if (subItems) {
               return (
                 <li
                   key={idx}
@@ -78,25 +78,29 @@ export const Header: React.FC = () => {
                     styles.expandableItem,
                   )}
                 >
-                  <a
-                    href="javascript:void(0)"
-                    onClick={(e) => {
-                      e.stopPropagation();
+                  <button
+                    onClick={() => {
                       toggleItem(idx);
                     }}
                   >
-                    {item}
-                  </a>
+                    {label}
+                  </button>
                   <div className={styles.submenu}>
                     <div className={styles.submenuContent}>
-                      <span className={styles.submenuTitle}>{item}</span>
-                      <Link href="#" className={styles.submenuSeeMore}>
+                      <span className={styles.submenuTitle}>{label}</span>
+                      <Link
+                        href={link}
+                        onClick={handleClose}
+                        className={styles.submenuSeeMore}
+                      >
                         Voir toute la rubrique
                       </Link>
                       <ul>
-                        {subItems.map((item, idx) => (
+                        {subItems.map(({ label, link }, idx) => (
                           <li key={idx}>
-                            <Link href="#">{item}</Link>
+                            <Link href={link} onClick={handleClose}>
+                              {label}
+                            </Link>
                           </li>
                         ))}
                       </ul>
@@ -107,7 +111,9 @@ export const Header: React.FC = () => {
             }
             return (
               <li key={idx}>
-                <Link href="#">{item}</Link>
+                <Link href={link} onClick={handleClose}>
+                  {label}
+                </Link>
               </li>
             );
           })}

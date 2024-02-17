@@ -204,6 +204,7 @@
     opacity: 1;
   }
 
+  li > button,
   li > a {
     display: inline-block;
 
@@ -221,6 +222,7 @@
     }
   }
 
+  & > li > button,
   & > li > a {
     margin: 0.25rem 0;
 
@@ -233,11 +235,22 @@
 }
 
 .expandable-item {
-  & > a {
+  & > button {
     position: relative;
+
+    height: 3rem;
+
+    border: none;
+
+    background-color: transparent;
+
+    font-size: inherit;
+
+    cursor: pointer;
+    text-align: left;
   }
 
-  & > a::after {
+  & > button::after {
     display: flex;
 
     position: absolute;
@@ -255,7 +268,7 @@
     justify-content: center;
   }
 
-  &.open > a::after {
+  &.open > button::after {
     transform: rotate(180deg);
   }
 
@@ -330,7 +343,9 @@
   .home-header {
     .items {
       & > li > a,
-      & > li > a:hover {
+      & > li > a:hover,
+      & > li > button,
+      & > li > button:hover {
         color: var(--inverted-color);
       }
     }
@@ -344,17 +359,17 @@
     }
 
     .expandable-item {
-      & > a::after,
-      & > a:hover::after {
+      & > button::after,
+      & > button:hover::after {
         content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px' fill='%23fff'><path d='M24 24H0V0h24v24z' fill='none' opacity='.87'/><path d='M15.88 9.29L12 13.17 8.12 9.29c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41-.39-.38-1.03-.39-1.42 0z'/></svg>");
       }
     }
 
     &.submenu-open .expandable-item {
-      & > a::after {
+      & > button::after {
         content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px' fill='%23262626'><path d='M24 24H0V0h24v24z' fill='none' opacity='.87'/><path d='M15.88 9.29L12 13.17 8.12 9.29c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41-.39-.38-1.03-.39-1.42 0z'/></svg>");
       }
-      & > a:hover::after {
+      & > button:hover::after {
         content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px' fill='%2302366b'><path d='M24 24H0V0h24v24z' fill='none' opacity='.87'/><path d='M15.88 9.29L12 13.17 8.12 9.29c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41-.39-.38-1.03-.39-1.42 0z'/></svg>");
       }
     }
@@ -365,7 +380,8 @@
       }
 
       .items {
-        & > li > a {
+        & > li > a,
+        & > li > button {
           color: var(--color);
           &:hover {
             color: var(--primary);
@@ -463,11 +479,14 @@
     }
 
     & > li > a:hover:before,
-    & li.open > a::before {
+    & > li > button:hover:before,
+    & li.open > a::before,
+    & li.open > buton::before {
       height: 0.25rem;
     }
 
-    & > li > a {
+    & > li > a,
+    & > li > button {
       display: inline-flex;
 
       position: relative;
@@ -501,11 +520,11 @@
   }
 
   .expandable-item {
-    & > a:hover::after {
+    & > button:hover::after {
       content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px' fill='%2302366b'><path d='M24 24H0V0h24v24z' fill='none' opacity='.87'/><path d='M15.88 9.29L12 13.17 8.12 9.29c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41-.39-.38-1.03-.39-1.42 0z'/></svg>");
     }
 
-    & > a {
+    & > button {
       display: inline-block;
 
       padding-right: 3rem !important;

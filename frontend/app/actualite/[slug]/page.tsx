@@ -6,6 +6,7 @@ import { readFile, readItems } from '@directus/sdk';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
+import { ContentBlock, Headband } from '../../components';
 import { Post as IPost } from '../../types';
 import directus from '../../utils/directus';
 import formatDate from '../../utils/formatDate';
@@ -53,20 +54,13 @@ const Post = async ({ params }: Props) => {
 
   return (
     <>
-      <div className={styles.headband}>
-        <ul className={styles.breadcrumb}>
-          <li>
-            <a href="/">Accueil</a>
-          </li>
-          <li>
-            <a href="/actualite">Toute l'actualité</a>
-          </li>
-          <li>
-            <a href={`/actualite/${params.slug}`}>{post.title}</a>
-          </li>
-        </ul>
-        <h1>{post.title}</h1>
-      </div>
+      <Headband
+        title={post.title}
+        breadcrumb={[
+          { link: '/actualite', label: "Toute l'actualité" },
+          { link: `/actualite/${params.slug}`, label: post.title },
+        ]}
+      />
       <div className={styles.metadata}>
         <span className={styles.tag}>
           <span
@@ -82,12 +76,12 @@ const Post = async ({ params }: Props) => {
       <main className={styles.main}>
         {featuredImage ? (
           <img
-            className={styles.image}
+            className={styles.featuredImage}
             src={`${process.env.DIRECTUS_URL}/assets/${post.featured_image}`}
             alt={featuredImage.title}
           />
         ) : null}
-        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+        <ContentBlock html={post.content} />
       </main>
     </>
   );

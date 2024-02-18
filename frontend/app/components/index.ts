@@ -6,3 +6,5 @@ export { Footer } from './Footer/Footer';
 export { Header } from './Header/Header';
 export { InteractiveMapCard } from './InteractiveMapCard/InteractiveMapCard';
 export { TourismCard } from './TourismCard/TourismCard';
+export { ContentBlock } from './ContentBlock/ContentBlock';
+export { Headband } from './Headband/Headband';

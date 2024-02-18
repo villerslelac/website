@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { Metadata } from 'next';
 import Link from 'next/link';
 
-import { Button, Post } from '../components';
+import { Button, Headband, Post } from '../components';
 import { Posts } from '../types';
 import directus from '../utils/directus';
 import styles from './page.module.scss';
@@ -61,17 +61,10 @@ const News = async ({
 
   return (
     <>
-      <div className={styles.headband}>
-        <ul className={styles.breadcrumb}>
-          <li>
-            <a href="/">Accueil</a>
-          </li>
-          <li>
-            <a href="/actualite">Toute l'actualité</a>
-          </li>
-        </ul>
-        <h1>Toute l'actualité</h1>
-      </div>
+      <Headband
+        title="Toute l'actualité"
+        breadcrumb={[{ link: '/actualite', label: "Toute l'actualité" }]}
+      />
       <main className={styles.main}>
         <div className={styles.posts}>
           {posts.map((post, idx) => (

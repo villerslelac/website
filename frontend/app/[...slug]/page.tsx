@@ -6,6 +6,7 @@ import { readItems } from '@directus/sdk';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
+import { ContentBlock, Headband } from '../components';
 import directus from '../utils/directus';
 import styles from './page.module.scss';
 
@@ -85,21 +86,15 @@ const Page = async ({ params }: Props) => {
 
   return (
     <>
-      <div className={styles.headband}>
-        <ul className={styles.breadcrumb}>
-          <li>
-            <a href="/">Accueil</a>
-          </li>
-          {breadcrumb.map(({ slug, title }) => (
-            <li key={slug}>
-              <a href={slug}>{title}</a>
-            </li>
-          ))}
-        </ul>
-        <h1>{page.title}</h1>
-      </div>
+      <Headband
+        title={page.title}
+        breadcrumb={breadcrumb.map(({ slug, title }) => ({
+          link: slug,
+          label: title,
+        }))}
+      />
       <main className={styles.main}>
-        <div dangerouslySetInnerHTML={{ __html: page.content }} />
+        <ContentBlock html={page.content} />
       </main>
     </>
   );

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Post as IPost } from '../../types';
 import directus from '../../utils/directus';
 import formatDate from '../../utils/formatDate';
+import { ContentBlock } from '../ContentBlock/ContentBlock';
 import styles from './Post.module.scss';
 
 interface PostProps {
@@ -51,12 +52,7 @@ export const Post: React.FC<PostProps> = async ({ size, className, post }) => {
           </div>
           <h3 className={styles.title}>{post.title}</h3>
         </header>
-        {size == 'lg' ? (
-          <div
-            className={styles.excerpt}
-            dangerouslySetInnerHTML={{ __html: post.excerpt }}
-          />
-        ) : null}
+        {size == 'lg' ? <ContentBlock html={post.excerpt} size="sm" /> : null}
         <footer className={styles.meta}>
           <time className={styles.metaTime}>
             {formatDate(post.date_published)}

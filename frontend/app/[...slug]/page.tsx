@@ -6,7 +6,7 @@ import { readItems } from '@directus/sdk';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import directus from '../lib/directus';
+import directus from '../utils/directus';
 import styles from './page.module.scss';
 
 type Props = {

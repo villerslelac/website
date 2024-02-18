@@ -1,20 +1,45 @@
-'use client';
+'use server';
 
+import { readItems } from '@directus/sdk';
 import NextIcon from '@material-symbols/svg-400/rounded/trending_flat.svg';
 import clsx from 'clsx';
 import Link from 'next/link';
 
 import {
-  Article,
   Button,
   DiscoverCard,
   Event,
   InteractiveMapCard,
+  Post,
   TourismCard,
 } from './components';
 import styles from './page.module.scss';
+import { Posts } from './types/post';
+import directus from './utils/directus';
 
-export default function Home() {
+const getPosts = async () => {
+  try {
+    const posts = await directus.request(
+      readItems('post', {
+        fields: ['*', 'tag.*'],
+        filter: {
+          date_published: {
+            _lte: '$NOW',
+          },
+        },
+        sort: ['-featured', '-date_published'],
+        limit: 4,
+      }),
+    );
+    return posts as Posts;
+  } catch (error) {
+    return [];
+  }
+};
+
+const Home = async () => {
+  const posts = await getPosts();
+
   return (
     <main>
       <section className={styles.video}>
@@ -78,13 +103,17 @@ export default function Home() {
       </section>
       <section className={styles.section}>
         <h2 className={styles.subtitle}>Actualités</h2>
-        <div className={styles.articles}>
-          <Article size="lg" className={styles.inTheNews} />
-          <Article />
-          <Article />
-          <Article />
+        <div className={styles.posts}>
+          {posts.map((post, idx) => (
+            <Post
+              key={post.id}
+              size={idx == 0 ? 'lg' : undefined}
+              className={clsx(idx == 0 && styles.inTheNews)}
+              post={post}
+            />
+          ))}
         </div>
-        <div className={styles.articlesBtnContainer}>
+        <div className={styles.postsBtnContainer}>
           <Button as={Link} href="#">
             Toute l&apos;actualité
           </Button>
@@ -146,4 +175,6 @@ export default function Home() {
       </section>
     </main>
   );
-}
+};
+
+export default Home;

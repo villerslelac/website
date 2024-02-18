@@ -1,12 +1,12 @@
-@mixin article {
+@mixin post {
   overflow: hidden;
 
   border: 1px solid var(--border);
   border-radius: var(--card-border-radius);
 }
 
-.large-article {
-  @include article;
+.large-post {
+  @include post;
 
   .title {
     margin-bottom: 1rem;
@@ -21,8 +21,8 @@
   }
 }
 
-.article {
-  @include article;
+.post {
+  @include post;
 
   .image-link,
   .meta {
@@ -45,6 +45,8 @@
 .image {
   width: 100%;
   height: auto;
+
+  border-bottom: 1px solid var(--border);
 }
 
 .content {
@@ -60,6 +62,7 @@
 .tags {
   margin-bottom: 0.5rem;
 
+  font-size: 0.875rem;
   font-weight: 600;
 
   text-transform: uppercase;
@@ -71,10 +74,7 @@
   padding-left: 1rem;
 
   color: var(--primary);
-  &:not(:last-of-type) {
-    margin-right: 1rem;
-  }
-  &:before {
+  &-color {
     display: block;
 
     position: absolute;
@@ -104,7 +104,7 @@
 }
 
 @media screen and (min-width: 992px) {
-  .large-article {
+  .large-post {
     display: flex;
     flex-direction: row;
 
@@ -121,7 +121,7 @@
     }
   }
 
-  .article {
+  .post {
     .image-link,
     .meta {
       display: block;

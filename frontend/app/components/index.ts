@@ -1,4 +1,4 @@
-export { Article } from './Article/Article';
+export { Post } from './Post/Post';
 export { Button } from './Button/Button';
 export { DiscoverCard } from './DiscoverCard/DiscoverCard';
 export { Event } from './Event/Event';

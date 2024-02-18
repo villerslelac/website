@@ -6,8 +6,8 @@ import type { Metadata } from 'next';
 import { Great_Vibes, Yeseva_One } from 'next/font/google';
 
 import { Footer, Header } from './components';
-import directus from './lib/directus';
 import './styles/main.scss';
+import directus from './utils/directus';
 
 const greatVibes = Great_Vibes({
   subsets: ['latin'],

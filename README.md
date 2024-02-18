@@ -40,6 +40,25 @@ npx directus start
 
 Open [http://localhost:8055](http://localhost:8055) in your browser to access the Directus dashboard.
 
+#### Transformation presets
+
+```
+Key: og-image
+Fit: Cover
+Width: 1200
+Height: 630
+Quality: 100%
+Additional transformations:
+[
+    [
+        "flatten",
+        {
+            "background": "#ffffff"
+        }
+    ]
+]
+```
+
 ### Running the Application
 
 The frontend is a [Next.js](https://nextjs.org/) project created with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). To run the application, follow these steps:

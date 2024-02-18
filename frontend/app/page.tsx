@@ -22,11 +22,6 @@ const getPosts = async () => {
     const posts = await directus.request(
       readItems('post', {
         fields: ['*', 'tag.*'],
-        filter: {
-          date_published: {
-            _lte: '$NOW',
-          },
-        },
         sort: ['-featured', '-date_published'],
         limit: 4,
       }),
@@ -114,7 +109,7 @@ const Home = async () => {
           ))}
         </div>
         <div className={styles.postsBtnContainer}>
-          <Button as={Link} href="#">
+          <Button as={Link} href="/actualite">
             Toute l&apos;actualité
           </Button>
         </div>

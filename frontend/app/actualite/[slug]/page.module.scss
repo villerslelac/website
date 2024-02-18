@@ -1,71 +1,95 @@
-@mixin post {
+.headband {
+  display: flex;
   overflow: hidden;
+  flex-direction: column;
 
-  border: 1px solid var(--border);
-  border-radius: var(--card-border-radius);
-}
+  position: relative;
 
-.large-post {
-  @include post;
+  margin: 1rem;
+  padding: 8rem 1rem 4rem;
 
-  .title {
-    margin-bottom: 1rem;
+  border-radius: var(--headband-border-radius);
 
+  background-color: var(--primary);
+
+  color: var(--inverted-color);
+
+  align-items: center;
+  justify-content: center;
+
+  h1 {
     font-family: var(--font-serif);
-    font-size: 1.875rem;
-    font-weight: 600;
+    font-size: 2rem;
+
+    text-align: center;
   }
 
-  &:hover .content {
-    color: var(--color-light);
-  }
-}
+  &:after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
 
-.post {
-  @include post;
+    height: 3rem;
 
-  .image-link,
-  .meta {
-    display: none;
-  }
+    opacity: 0.35;
 
-  .title {
-    margin-bottom: 1rem;
+    background-image: url('/pattern.svg');
+    background-repeat: repeat-x;
+    background-position: center;
 
-    font-family: var(--font-serif);
-    font-size: 1.5rem;
-    font-weight: 600;
-  }
-
-  &:hover .content {
-    color: var(--color-light);
+    content: '';
   }
 }
 
-.image {
-  width: 100%;
-  height: auto;
-
-  border-bottom: 1px solid var(--border);
-}
-
-.content {
-  display: block;
-
-  padding: 1rem 1rem 0;
-
-  color: var(--color);
-
-  text-decoration: none;
-}
-
-.tags {
-  margin-bottom: 0.5rem;
+.breadcrumb {
+  margin: 0;
+  padding: 0;
 
   font-size: 0.875rem;
-  font-weight: 600;
+  font-style: italic;
 
-  text-transform: uppercase;
+  list-style: none;
+
+  li {
+    display: inline;
+    &:not(:last-of-type) {
+      margin-right: 0.5em;
+    }
+  }
+
+  li::after {
+    margin-left: 0.5em;
+
+    content: '»';
+  }
+
+  li:last-child::after {
+    content: '';
+  }
+
+  a {
+    color: inherit;
+
+    transition: all 0.4s ease-out;
+    text-decoration: none;
+    &:hover {
+      color: var(--accent);
+    }
+  }
+}
+
+.metadata {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 992px;
+  margin: 0 auto;
+  padding: 0.5rem calc(1rem + var(--headband-border-radius)) 1rem;
+
+  color: var(--color-light);
+  font-size: 1rem;
+
+  text-align: center;
 }
 
 .tag {
@@ -74,6 +98,9 @@
   padding-left: 1rem;
 
   color: var(--primary);
+  font-weight: 600;
+
+  text-transform: uppercase;
   &-color {
     display: block;
 
@@ -92,46 +119,49 @@
   }
 }
 
-.excerpt {
-  margin-bottom: 1rem;
+.meta-time {
+  display: block;
 }
 
-.meta {
-  margin-bottom: 1rem;
-
-  color: var(--color-light);
-  font-size: 0.875rem;
+@media screen and (min-width: 768px) {
+  .headband {
+    padding: 9rem 1.5rem 5rem;
+    h1 {
+      font-size: 3rem;
+    }
+    &:after {
+      height: 4rem;
+    }
+  }
 }
 
 @media screen and (min-width: 992px) {
-  .large-post {
-    display: flex;
-    flex-direction: row;
-
-    .image-link {
-      flex: 2;
-    }
-    .image {
-      height: 100%;
-
-      object-fit: cover;
-
-      border-right: 1px solid var(--border);
-    }
-    .content {
-      flex: 1;
-    }
+  .headband {
+    margin: 0 1.5rem 1.5rem;
   }
+}
 
-  .post {
-    .image-link,
-    .meta {
-      display: block;
+@media screen and (min-width: 1200px) {
+  .headband {
+    padding: 10rem 2rem 6rem;
+    h1 {
+      font-size: 4rem;
+    }
+    &:after {
+      height: 5rem;
     }
   }
 }
 
-.excerpt {
+.main {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 992px;
+  margin: 0 auto;
+  padding: 0 calc(1rem + var(--headband-border-radius)) 1.5rem;
+
+  flex: 1 1 auto;
+
   h1,
   h2 {
     position: relative;
@@ -286,7 +316,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .excerpt {
+  .main {
     h1,
     h2 {
       margin-bottom: 1.5rem;
@@ -308,6 +338,56 @@
 
     h6 {
       font-size: 1.125rem;
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .main {
+    padding: 0 calc(1.5rem + var(--headband-border-radius)) 2rem;
+  }
+
+  .metadata {
+    padding: 1rem calc(1rem + var(--headband-border-radius)) 1.5rem;
+  }
+
+  .meta-time {
+    display: inline-block;
+    &:before {
+      padding: 0.5rem;
+
+      content: '-';
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .main {
+    padding: 0;
+    padding-bottom: 3rem;
+
+    font-size: 1.125rem;
+    h1,
+    h2 {
+      margin-bottom: 2rem;
+
+      font-size: 3rem;
+    }
+
+    h3 {
+      font-size: 2.25rem;
+    }
+
+    h4 {
+      font-size: 1.875rem;
+    }
+
+    h5 {
+      font-size: 1.5rem;
+    }
+
+    h6 {
+      font-size: 1.25rem;
     }
   }
 }

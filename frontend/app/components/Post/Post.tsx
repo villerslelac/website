@@ -23,7 +23,7 @@ export const Post: React.FC<PostProps> = async ({ size, className, post }) => {
     <article
       className={clsx(size == 'lg' ? styles.largePost : styles.post, className)}
     >
-      <Link className={styles.imageLink} href="#">
+      <Link className={styles.imageLink} href={`/actualite/${post.slug}`}>
         {featuredImage ? (
           <img
             className={styles.image}
@@ -38,7 +38,7 @@ export const Post: React.FC<PostProps> = async ({ size, className, post }) => {
           />
         )}
       </Link>
-      <Link className={styles.content} href="#">
+      <Link className={styles.content} href={`/actualite/${post.slug}`}>
         <header>
           <div className={styles.tags}>
             <span className={styles.tag}>

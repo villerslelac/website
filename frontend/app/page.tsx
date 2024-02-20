@@ -14,7 +14,7 @@ import {
   TourismCard,
 } from './components';
 import styles from './page.module.scss';
-import { Posts } from './types/post';
+import { Events, Posts } from './types';
 import directus from './utils/directus';
 
 const getPosts = async () => {
@@ -32,8 +32,28 @@ const getPosts = async () => {
   }
 };
 
+const getEvents = async () => {
+  try {
+    const events = await directus.request(
+      readItems('event', {
+        filter: {
+          date: {
+            _gte: '$NOW',
+          },
+        },
+        sort: ['date'],
+        limit: 5,
+      }),
+    );
+    return events as Events;
+  } catch (error) {
+    return [];
+  }
+};
+
 const Home = async () => {
   const posts = await getPosts();
+  const events = await getEvents();
 
   return (
     <main>
@@ -117,20 +137,19 @@ const Home = async () => {
       <section className={styles.section}>
         <h2 className={styles.subtitle}>Agenda</h2>
         <div className={styles.events}>
-          <Event
-            title="Titre de l'évènement"
-            size="lg"
-            className={styles.nextEvent}
-          />
-          <div className={styles.nextEvents}>
-            <Event title="Titre court" />
-            <Event title="Titre de l'évènement très long" />
-            <Event title="Titre de l'évènement long" />
-            <Event title="Titre de l'évènement" />
-          </div>
+          {events.length > 0 ? (
+            <Event size="lg" className={styles.nextEvent} event={events[0]} />
+          ) : null}
+          {events.length > 1 ? (
+            <div className={styles.nextEvents}>
+              {events.slice(1).map((event) => (
+                <Event key={event.id} event={event} />
+              ))}
+            </div>
+          ) : null}
         </div>
         <div className={styles.eventsBtnContainer}>
-          <Button as={Link} href="#">
+          <Button as={Link} href="/evenements">
             Tous les évènements
           </Button>
         </div>

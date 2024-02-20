@@ -2,6 +2,34 @@ version: 1
 directus: 10.9.2
 vendor: sqlite
 collections:
+  - collection: event
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: event
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: event
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations:
+        - language: fr-FR
+          translation: Événements
+          singular: événement
+          plural: événements
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: event
   - collection: menu
     meta:
       accountability: null
@@ -115,6 +143,481 @@ collections:
     schema:
       name: tags
 fields:
+  - collection: event
+    field: id
+    type: integer
+    meta:
+      collection: event
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: event
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: event
+    field: user_created
+    type: string
+    meta:
+      collection: event
+      conditions: null
+      display: user
+      display_options: null
+      field: user_created
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 2
+      special:
+        - user-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: user_created
+      table: event
+      data_type: char
+      default_value: null
+      max_length: 36
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_users
+      foreign_key_column: id
+  - collection: event
+    field: date_created
+    type: timestamp
+    meta:
+      collection: event
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 3
+      special:
+        - cast-timestamp
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_created
+      table: event
+      data_type: datetime
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: event
+    field: date_updated
+    type: timestamp
+    meta:
+      collection: event
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 4
+      special:
+        - cast-timestamp
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_updated
+      table: event
+      data_type: datetime
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: event
+    field: title
+    type: string
+    meta:
+      collection: event
+      conditions: null
+      display: null
+      display_options: null
+      field: title
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 5
+      special: null
+      translations:
+        - language: fr-FR
+          translation: Titre
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: title
+      table: event
+      data_type: varchar
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: event
+    field: excerpt
+    type: text
+    meta:
+      collection: event
+      conditions: null
+      display: null
+      display_options: null
+      field: excerpt
+      group: null
+      hidden: false
+      interface: input-rich-text-html
+      note: null
+      options:
+        toolbar:
+          - bold
+          - code
+          - customLink
+          - fullscreen
+          - italic
+          - strikethrough
+          - subscript
+          - superscript
+          - underline
+      readonly: false
+      required: true
+      sort: 10
+      special: null
+      translations:
+        - language: fr-FR
+          translation: Extrait
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: excerpt
+      table: event
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: event
+    field: content
+    type: text
+    meta:
+      collection: event
+      conditions: null
+      display: null
+      display_options: null
+      field: content
+      group: null
+      hidden: false
+      interface: input-rich-text-html
+      note: null
+      options:
+        toolbar:
+          - blockquote
+          - bold
+          - bullist
+          - code
+          - customImage
+          - customLink
+          - customMedia
+          - fullscreen
+          - h2
+          - h3
+          - h4
+          - h5
+          - h6
+          - hr
+          - italic
+          - numlist
+          - strikethrough
+          - subscript
+          - superscript
+          - table
+          - underline
+      readonly: false
+      required: true
+      sort: 11
+      special: null
+      translations:
+        - language: fr-FR
+          translation: Contenu
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: content
+      table: event
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: event
+    field: location
+    type: string
+    meta:
+      collection: event
+      conditions: null
+      display: null
+      display_options: null
+      field: location
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        iconLeft: location_on
+      readonly: false
+      required: true
+      sort: 8
+      special: null
+      translations:
+        - language: fr-FR
+          translation: Lieu
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: location
+      table: event
+      data_type: varchar
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: event
+    field: featured_image
+    type: uuid
+    meta:
+      collection: event
+      conditions: null
+      display: null
+      display_options: null
+      field: featured_image
+      group: null
+      hidden: false
+      interface: file-image
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 9
+      special:
+        - file
+      translations:
+        - language: fr-FR
+          translation: Image de mise en avant
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: featured_image
+      table: event
+      data_type: char
+      default_value: null
+      max_length: 36
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: event
+    field: date
+    type: date
+    meta:
+      collection: event
+      conditions: null
+      display: null
+      display_options: null
+      field: date
+      group: null
+      hidden: false
+      interface: datetime
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 7
+      special: null
+      translations:
+        - language: fr-FR
+          translation: Date
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date
+      table: event
+      data_type: date
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: event
+    field: slug
+    type: string
+    meta:
+      collection: event
+      conditions: null
+      display: null
+      display_options: null
+      field: slug
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        slug: true
+      readonly: false
+      required: true
+      sort: 6
+      special: null
+      translations:
+        - language: fr-FR
+          translation: Slug
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: slug
+      table: event
+      data_type: varchar
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: true
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
   - collection: menu
     field: id
     type: integer
@@ -1246,22 +1749,18 @@ fields:
           - bold
           - bullist
           - code
-          - customImage
           - customLink
-          - customMedia
           - fullscreen
           - h2
           - h3
           - h4
           - h5
           - h6
-          - hr
           - italic
           - numlist
           - strikethrough
           - subscript
           - superscript
-          - table
           - underline
       readonly: false
       required: true
@@ -1413,6 +1912,48 @@ fields:
       foreign_key_table: null
       foreign_key_column: null
 relations:
+  - collection: event
+    field: user_created
+    related_collection: directus_users
+    meta:
+      junction_field: null
+      many_collection: event
+      many_field: user_created
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: event
+      column: user_created
+      foreign_key_table: directus_users
+      foreign_key_column: id
+      constraint_name: null
+      on_update: NO ACTION
+      on_delete: NO ACTION
+  - collection: event
+    field: featured_image
+    related_collection: directus_files
+    meta:
+      junction_field: null
+      many_collection: event
+      many_field: featured_image
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: event
+      column: featured_image
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: null
+      on_update: NO ACTION
+      on_delete: SET NULL
   - collection: page
     field: user_created
     related_collection: directus_users

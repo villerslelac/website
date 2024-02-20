@@ -9,9 +9,9 @@ import { ContentBlock } from '../ContentBlock/ContentBlock';
 import styles from './Post.module.scss';
 
 interface PostProps {
+  post: IPost;
   size?: 'lg';
   className?: string;
-  post: IPost;
 }
 
 export const Post: React.FC<PostProps> = async ({ size, className, post }) => {

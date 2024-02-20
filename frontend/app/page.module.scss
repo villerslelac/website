@@ -612,6 +612,8 @@
   }
 
   .next-event {
+    max-width: calc(50% - 1.5rem);
+
     flex: 1;
   }
 

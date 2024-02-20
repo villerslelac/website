@@ -1,0 +1,91 @@
+.main {
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.order-container {
+  display: flex;
+
+  margin-bottom: 1rem;
+
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.past-btn,
+.next-btn {
+  padding: 0.5rem 0.75rem;
+
+  border-bottom: 3px solid transparent;
+
+  color: var(--color-text);
+  font-size: 1.125rem;
+  font-weight: 600;
+
+  text-decoration: none;
+  &.active {
+    border-bottom: 3px solid var(--accent);
+
+    color: var(--primary);
+  }
+  &:hover {
+    border-bottom: 3px solid var(--accent);
+
+    color: var(--primary);
+  }
+}
+
+.events {
+  display: flex;
+  flex-direction: column;
+
+  gap: 1rem;
+}
+
+.events-btn-container {
+  padding: 1rem 0;
+
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .main {
+    padding: 1.5rem;
+  }
+
+  .order-container {
+    margin-bottom: 1.5rem;
+  }
+
+  .events {
+    display: grid;
+
+    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .events-btn-container {
+    padding: 1.5rem 0;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .main {
+    padding: 2rem;
+  }
+
+  .order-container {
+    margin-bottom: 2rem;
+  }
+
+  .events {
+    gap: 2rem;
+  }
+
+  .events-btn-container {
+    padding: 2rem 0;
+  }
+}

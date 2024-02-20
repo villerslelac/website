@@ -79,6 +79,10 @@
   border: 1px solid var(--border);
   border-radius: var(--card-border-radius);
 
+  &:hover {
+    filter: opacity(0.65);
+  }
+
   .image-link {
     display: flex;
   }
@@ -94,9 +98,6 @@
 
     padding: 1rem;
   }
-  &:hover .content {
-    color: var(--color-light);
-  }
 
   .title {
     font-size: 1.875rem;
@@ -110,6 +111,10 @@
   overflow: hidden;
   flex-direction: row;
 
+  &:hover {
+    filter: opacity(0.65);
+  }
+
   .image-link {
     flex-shrink: 0;
   }
@@ -122,10 +127,6 @@
 
     flex: 1;
     justify-content: center;
-  }
-
-  &:hover .content {
-    color: var(--color-light);
   }
 
   .title {

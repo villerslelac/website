@@ -10,7 +10,7 @@ import { Posts } from '../types';
 import directus from '../utils/directus';
 import styles from './page.module.scss';
 
-const POST_LIMIT = 8;
+const POSTS_LIMIT = 8;
 
 const getPosts = async (page: number) => {
   try {
@@ -18,7 +18,7 @@ const getPosts = async (page: number) => {
       readItems('post', {
         fields: ['*', 'tag.*'],
         sort: ['-featured', '-date_published'],
-        limit: POST_LIMIT,
+        limit: POSTS_LIMIT,
         page: page,
       }),
     );
@@ -57,7 +57,7 @@ const News = async ({
   const page = searchParams?.page ? parseInt(searchParams.page) || 1 : 1;
   const posts = (await getPosts(page)) as Posts;
   const nbrOfPosts = (await getNbrOfPosts()) as number;
-  const isLastPage = page * POST_LIMIT >= nbrOfPosts;
+  const isLastPage = page * POSTS_LIMIT >= nbrOfPosts;
 
   return (
     <>

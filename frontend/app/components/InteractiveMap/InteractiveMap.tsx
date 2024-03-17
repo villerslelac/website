@@ -162,7 +162,9 @@ interface PopupContentProps {
 const PopupContent: React.FC<PopupContentProps> = ({ poi }) => {
   return (
     <>
-      <h4 className={styles.popupTitle}>{poi.name}</h4>
+      <h4 className={styles.popupTitle}>
+        <a href={`/point-interet/${poi.slug}`}>{poi.name}</a>
+      </h4>
       <p className={styles.popupDesc}>{poi.description}</p>
     </>
   );
@@ -191,7 +193,9 @@ const ListItem: React.FC<ListItemProps> = ({ poi, onClick }) => {
       <span className={clsx(styles.category, styles[poi.category])}>
         {getCategoryName(poi.category)}
       </span>
-      <h4 className={styles.listItemTitle}>{poi.name}</h4>
+      <h4 className={styles.listItemTitle}>
+        <a href={`/point-interet/${poi.slug}`}>{poi.name}</a>
+      </h4>
       <p className={styles.listItemDesc}>{poi.description}</p>
       <button onClick={onClick} className={styles.listItemBtn}>
         <SeeIcon />

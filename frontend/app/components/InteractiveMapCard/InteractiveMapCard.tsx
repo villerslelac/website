@@ -19,7 +19,7 @@ export const InteractiveMapCard: React.FC<InteractiveMapCardProps> = ({
         <h2 className={styles.title}>Carte interactive</h2>
         <Button
           as={Link}
-          href="#"
+          href="/carte-interactive"
           variant="secondary"
           className={styles.button}
         >

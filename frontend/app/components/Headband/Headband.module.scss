@@ -20,6 +20,7 @@
   h1 {
     font-family: var(--font-serif);
     font-size: 2rem;
+    line-height: 1;
 
     text-align: center;
   }
@@ -44,6 +45,7 @@
 
 .breadcrumb {
   margin: 0;
+  margin-bottom: 0.5rem;
   padding: 0;
 
   font-size: 0.875rem;

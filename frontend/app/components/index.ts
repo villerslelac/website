@@ -8,3 +8,4 @@ export { InteractiveMapCard } from './InteractiveMapCard/InteractiveMapCard';
 export { TourismCard } from './TourismCard/TourismCard';
 export { ContentBlock } from './ContentBlock/ContentBlock';
 export { Headband } from './Headband/Headband';
+export { Spinner } from './Spinner/Spinner';

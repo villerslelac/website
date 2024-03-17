@@ -1,6 +1,6 @@
 version: 1
-directus: 10.9.2
-vendor: sqlite
+directus: 10.10.4
+vendor: postgres
 collections:
   - collection: event
     meta:
@@ -86,6 +86,34 @@ collections:
       versioning: false
     schema:
       name: page
+  - collection: poi
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: poi
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: location_on
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations:
+        - language: fr-FR
+          translation: Points d'intérêt
+          singular: point d'intérêt
+          plural: points d'intérêt
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: poi
   - collection: post
     meta:
       accountability: all
@@ -169,12 +197,12 @@ fields:
       name: id
       table: event
       data_type: integer
-      default_value: null
+      default_value: nextval('event_id_seq'::regclass)
       max_length: null
-      numeric_precision: null
-      numeric_scale: null
+      numeric_precision: 32
+      numeric_scale: 0
       is_nullable: false
-      is_unique: false
+      is_unique: true
       is_primary_key: true
       is_generated: false
       generation_expression: null
@@ -183,7 +211,7 @@ fields:
       foreign_key_column: null
   - collection: event
     field: user_created
-    type: string
+    type: uuid
     meta:
       collection: event
       conditions: null
@@ -208,9 +236,9 @@ fields:
     schema:
       name: user_created
       table: event
-      data_type: char
+      data_type: uuid
       default_value: null
-      max_length: 36
+      max_length: null
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -249,7 +277,7 @@ fields:
     schema:
       name: date_created
       table: event
-      data_type: datetime
+      data_type: timestamp with time zone
       default_value: null
       max_length: null
       numeric_precision: null
@@ -290,7 +318,7 @@ fields:
     schema:
       name: date_updated
       table: event
-      data_type: datetime
+      data_type: timestamp with time zone
       default_value: null
       max_length: null
       numeric_precision: null
@@ -330,7 +358,7 @@ fields:
     schema:
       name: title
       table: event
-      data_type: varchar
+      data_type: character varying
       default_value: null
       max_length: 255
       numeric_precision: null
@@ -483,7 +511,7 @@ fields:
     schema:
       name: location
       table: event
-      data_type: varchar
+      data_type: character varying
       default_value: null
       max_length: 255
       numeric_precision: null
@@ -524,9 +552,9 @@ fields:
     schema:
       name: featured_image
       table: event
-      data_type: char
+      data_type: uuid
       default_value: null
-      max_length: 36
+      max_length: null
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -605,7 +633,7 @@ fields:
     schema:
       name: slug
       table: event
-      data_type: varchar
+      data_type: character varying
       default_value: null
       max_length: 255
       numeric_precision: null
@@ -644,12 +672,12 @@ fields:
       name: id
       table: menu
       data_type: integer
-      default_value: null
+      default_value: nextval('menu_id_seq'::regclass)
       max_length: null
-      numeric_precision: null
-      numeric_scale: null
+      numeric_precision: 32
+      numeric_scale: 0
       is_nullable: false
-      is_unique: false
+      is_unique: true
       is_primary_key: true
       is_generated: false
       generation_expression: null
@@ -683,7 +711,7 @@ fields:
     schema:
       name: name
       table: menu
-      data_type: varchar
+      data_type: character varying
       default_value: null
       max_length: 255
       numeric_precision: null
@@ -807,12 +835,12 @@ fields:
       name: id
       table: page
       data_type: integer
-      default_value: null
+      default_value: nextval('page_id_seq'::regclass)
       max_length: null
-      numeric_precision: null
-      numeric_scale: null
+      numeric_precision: 32
+      numeric_scale: 0
       is_nullable: false
-      is_unique: false
+      is_unique: true
       is_primary_key: true
       is_generated: false
       generation_expression: null
@@ -873,7 +901,7 @@ fields:
     schema:
       name: status
       table: page
-      data_type: varchar
+      data_type: character varying
       default_value: draft
       max_length: 255
       numeric_precision: null
@@ -888,7 +916,7 @@ fields:
       foreign_key_column: null
   - collection: page
     field: user_created
-    type: string
+    type: uuid
     meta:
       collection: page
       conditions: null
@@ -913,9 +941,9 @@ fields:
     schema:
       name: user_created
       table: page
-      data_type: char
+      data_type: uuid
       default_value: null
-      max_length: 36
+      max_length: null
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -954,7 +982,7 @@ fields:
     schema:
       name: date_created
       table: page
-      data_type: datetime
+      data_type: timestamp with time zone
       default_value: null
       max_length: null
       numeric_precision: null
@@ -995,7 +1023,7 @@ fields:
     schema:
       name: date_updated
       table: page
-      data_type: datetime
+      data_type: timestamp with time zone
       default_value: null
       max_length: null
       numeric_precision: null
@@ -1036,7 +1064,7 @@ fields:
     schema:
       name: title
       table: page
-      data_type: varchar
+      data_type: character varying
       default_value: null
       max_length: 255
       numeric_precision: null
@@ -1077,7 +1105,7 @@ fields:
     schema:
       name: slug
       table: page
-      data_type: varchar
+      data_type: character varying
       default_value: null
       max_length: 255
       numeric_precision: null
@@ -1185,8 +1213,8 @@ fields:
       data_type: integer
       default_value: null
       max_length: null
-      numeric_precision: null
-      numeric_scale: null
+      numeric_precision: 32
+      numeric_scale: 0
       is_nullable: true
       is_unique: false
       is_primary_key: false
@@ -1195,6 +1223,509 @@ fields:
       has_auto_increment: false
       foreign_key_table: page
       foreign_key_column: id
+  - collection: poi
+    field: id
+    type: integer
+    meta:
+      collection: poi
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: poi
+      data_type: integer
+      default_value: nextval('poi_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: poi
+    field: date_created
+    type: timestamp
+    meta:
+      collection: poi
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 2
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_created
+      table: poi
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: poi
+    field: date_updated
+    type: timestamp
+    meta:
+      collection: poi
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 3
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date_updated
+      table: poi
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: poi
+    field: name
+    type: string
+    meta:
+      collection: poi
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 4
+      special: null
+      translations:
+        - language: fr-FR
+          translation: Nom
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: name
+      table: poi
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: poi
+    field: description
+    type: string
+    meta:
+      collection: poi
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 5
+      special: null
+      translations:
+        - language: fr-FR
+          translation: Description
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: description
+      table: poi
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: poi
+    field: address
+    type: text
+    meta:
+      collection: poi
+      conditions: null
+      display: null
+      display_options: null
+      field: address
+      group: null
+      hidden: false
+      interface: input-rich-text-html
+      note: null
+      options:
+        toolbar:
+          - bold
+          - bullist
+          - code
+          - customLink
+          - fullscreen
+          - hr
+          - italic
+          - numlist
+          - strikethrough
+          - subscript
+          - superscript
+          - underline
+      readonly: false
+      required: true
+      sort: 7
+      special: null
+      translations:
+        - language: fr-FR
+          translation: Adresse
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: address
+      table: poi
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: poi
+    field: contact
+    type: text
+    meta:
+      collection: poi
+      conditions: null
+      display: null
+      display_options: null
+      field: contact
+      group: null
+      hidden: false
+      interface: input-rich-text-html
+      note: null
+      options:
+        toolbar:
+          - bold
+          - bullist
+          - code
+          - customLink
+          - fullscreen
+          - hr
+          - italic
+          - numlist
+          - strikethrough
+          - subscript
+          - superscript
+          - underline
+      readonly: false
+      required: false
+      sort: 8
+      special: null
+      translations:
+        - language: fr-FR
+          translation: Contact
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: contact
+      table: poi
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: poi
+    field: category
+    type: string
+    meta:
+      collection: poi
+      conditions: null
+      display: null
+      display_options: null
+      field: category
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: Association
+            value: association
+          - text: Restaurant
+            value: restaurant
+          - text: Commerce
+            value: shop
+          - text: Tourisme
+            value: tourism
+      readonly: false
+      required: true
+      sort: 9
+      special: null
+      translations:
+        - language: fr-FR
+          translation: Catégorie
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: category
+      table: poi
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: poi
+    field: tags
+    type: json
+    meta:
+      collection: poi
+      conditions: null
+      display: null
+      display_options: null
+      field: tags
+      group: null
+      hidden: false
+      interface: tags
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 10
+      special:
+        - cast-json
+      translations:
+        - language: fr-FR
+          translation: Étiquettes
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: tags
+      table: poi
+      data_type: json
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: poi
+    field: external_links
+    type: json
+    meta:
+      collection: poi
+      conditions: null
+      display: null
+      display_options: null
+      field: external_links
+      group: null
+      hidden: false
+      interface: list
+      note: null
+      options:
+        fields:
+          - field: name
+            name: name
+            type: string
+            meta:
+              field: name
+              width: half
+              type: string
+              required: true
+              interface: input
+          - field: link
+            name: link
+            type: string
+            meta:
+              field: link
+              width: half
+              type: string
+              required: true
+              interface: input
+      readonly: false
+      required: false
+      sort: 11
+      special:
+        - cast-json
+      translations:
+        - language: fr-FR
+          translation: Liens externes
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: external_links
+      table: poi
+      data_type: json
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: poi
+    field: geolocation
+    type: json
+    meta:
+      collection: poi
+      conditions: null
+      display: null
+      display_options: null
+      field: geolocation
+      group: null
+      hidden: false
+      interface: map
+      note: null
+      options:
+        defaultView:
+          bearing: 0
+          center:
+            lat: 47.066438125876886
+            lng: 6.684152088141786
+          pitch: 0
+          zoom: 12.14400393231336
+        geometryType: Point
+      readonly: false
+      required: true
+      sort: 6
+      special:
+        - cast-json
+      translations:
+        - language: fr-FR
+          translation: Géolocalisation
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: geolocation
+      table: poi
+      data_type: json
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
   - collection: post
     field: id
     type: integer
@@ -1221,12 +1752,12 @@ fields:
       name: id
       table: post
       data_type: integer
-      default_value: null
+      default_value: nextval('post_id_seq'::regclass)
       max_length: null
-      numeric_precision: null
-      numeric_scale: null
+      numeric_precision: 32
+      numeric_scale: 0
       is_nullable: false
-      is_unique: false
+      is_unique: true
       is_primary_key: true
       is_generated: false
       generation_expression: null
@@ -1287,7 +1818,7 @@ fields:
     schema:
       name: status
       table: post
-      data_type: varchar
+      data_type: character varying
       default_value: draft
       max_length: 255
       numeric_precision: null
@@ -1302,7 +1833,7 @@ fields:
       foreign_key_column: null
   - collection: post
     field: user_created
-    type: string
+    type: uuid
     meta:
       collection: post
       conditions: null
@@ -1327,9 +1858,9 @@ fields:
     schema:
       name: user_created
       table: post
-      data_type: char
+      data_type: uuid
       default_value: null
-      max_length: 36
+      max_length: null
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -1368,7 +1899,7 @@ fields:
     schema:
       name: date_created
       table: post
-      data_type: datetime
+      data_type: timestamp with time zone
       default_value: null
       max_length: null
       numeric_precision: null
@@ -1409,7 +1940,7 @@ fields:
     schema:
       name: date_updated
       table: post
-      data_type: datetime
+      data_type: timestamp with time zone
       default_value: null
       max_length: null
       numeric_precision: null
@@ -1450,7 +1981,7 @@ fields:
     schema:
       name: date_published
       table: post
-      data_type: datetime
+      data_type: timestamp without time zone
       default_value: null
       max_length: null
       numeric_precision: null
@@ -1488,7 +2019,7 @@ fields:
     schema:
       name: title
       table: post
-      data_type: varchar
+      data_type: character varying
       default_value: null
       max_length: 255
       numeric_precision: null
@@ -1529,7 +2060,7 @@ fields:
     schema:
       name: slug
       table: post
-      data_type: varchar
+      data_type: character varying
       default_value: null
       max_length: 255
       numeric_precision: null
@@ -1611,9 +2142,9 @@ fields:
     schema:
       name: featured_image
       table: post
-      data_type: char
+      data_type: uuid
       default_value: null
-      max_length: 36
+      max_length: null
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -1719,8 +2250,8 @@ fields:
       data_type: integer
       default_value: null
       max_length: null
-      numeric_precision: null
-      numeric_scale: null
+      numeric_precision: 32
+      numeric_scale: 0
       is_nullable: true
       is_unique: false
       is_primary_key: false
@@ -1814,12 +2345,12 @@ fields:
       name: id
       table: tags
       data_type: integer
-      default_value: null
+      default_value: nextval('tags_id_seq'::regclass)
       max_length: null
-      numeric_precision: null
-      numeric_scale: null
+      numeric_precision: 32
+      numeric_scale: 0
       is_nullable: false
-      is_unique: false
+      is_unique: true
       is_primary_key: true
       is_generated: false
       generation_expression: null
@@ -1853,7 +2384,7 @@ fields:
     schema:
       name: name
       table: tags
-      data_type: varchar
+      data_type: character varying
       default_value: null
       max_length: 255
       numeric_precision: null
@@ -1898,7 +2429,7 @@ fields:
     schema:
       name: color
       table: tags
-      data_type: varchar
+      data_type: character varying
       default_value: null
       max_length: 255
       numeric_precision: null
@@ -1930,7 +2461,7 @@ relations:
       column: user_created
       foreign_key_table: directus_users
       foreign_key_column: id
-      constraint_name: null
+      constraint_name: event_user_created_foreign
       on_update: NO ACTION
       on_delete: NO ACTION
   - collection: event
@@ -1951,7 +2482,7 @@ relations:
       column: featured_image
       foreign_key_table: directus_files
       foreign_key_column: id
-      constraint_name: null
+      constraint_name: event_featured_image_foreign
       on_update: NO ACTION
       on_delete: SET NULL
   - collection: page
@@ -1972,7 +2503,7 @@ relations:
       column: user_created
       foreign_key_table: directus_users
       foreign_key_column: id
-      constraint_name: null
+      constraint_name: page_user_created_foreign
       on_update: NO ACTION
       on_delete: NO ACTION
   - collection: page
@@ -1993,7 +2524,7 @@ relations:
       column: parent_page
       foreign_key_table: page
       foreign_key_column: id
-      constraint_name: null
+      constraint_name: page_parent_page_foreign
       on_update: NO ACTION
       on_delete: NO ACTION
   - collection: post
@@ -2014,7 +2545,7 @@ relations:
       column: user_created
       foreign_key_table: directus_users
       foreign_key_column: id
-      constraint_name: null
+      constraint_name: post_user_created_foreign
       on_update: NO ACTION
       on_delete: NO ACTION
   - collection: post
@@ -2035,7 +2566,7 @@ relations:
       column: featured_image
       foreign_key_table: directus_files
       foreign_key_column: id
-      constraint_name: null
+      constraint_name: post_featured_image_foreign
       on_update: NO ACTION
       on_delete: SET NULL
   - collection: post
@@ -2056,6 +2587,6 @@ relations:
       column: tag
       foreign_key_table: tags
       foreign_key_column: id
-      constraint_name: null
+      constraint_name: post_tag_foreign
       on_update: NO ACTION
       on_delete: SET NULL

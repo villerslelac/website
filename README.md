@@ -6,39 +6,27 @@
 
 The API is powered by [Directus](https://directus.io/), and you can initialize it by following these steps:
 
-1. Navigate to the backend directory and install dependencies using pnpm
+1. Navigate to the backend directory and start Directus
 
 ```sh
 cd backend
-pnpm install
+docker compose up -d
 ```
 
-2. Bootstrap the Directus project:
+2. Apply the database schema using the provided YAML file
 
 ```sh
-npx directus bootstrap
-```
-
-3. Add an admin user to the .env file:
-
-```sh
-ADMIN_EMAIL="admin@example.com"
-ADMIN_PASSWORD="d1r3ctu5"
-```
-
-4. Apply the database schema using the provided YAML file
-
-```sh
-npx directus schema apply schema.yaml
-```
-
-5. Start the Directus server:
-
-```sh
-npx directus start
+docker cp ./schema.yaml directus:/directus/schema.yaml
+docker exec -it directus /bin/sh
+npx directus schema apply --yes ./schema.yaml
 ```
 
 Open [http://localhost:8055](http://localhost:8055) in your browser to access the Directus dashboard.
+
+You can log in using the following credentials:
+
+- Username: admin@example.com
+- Password: d1r3ctu5
 
 #### Transformation presets
 

@@ -1397,7 +1397,7 @@ fields:
       options: null
       readonly: false
       required: true
-      sort: 5
+      sort: 6
       special: null
       translations:
         - language: fr-FR
@@ -1450,7 +1450,7 @@ fields:
           - underline
       readonly: false
       required: true
-      sort: 7
+      sort: 8
       special: null
       translations:
         - language: fr-FR
@@ -1503,7 +1503,7 @@ fields:
           - underline
       readonly: false
       required: false
-      sort: 8
+      sort: 9
       special: null
       translations:
         - language: fr-FR
@@ -1552,7 +1552,7 @@ fields:
             value: tourism
       readonly: false
       required: true
-      sort: 9
+      sort: 10
       special: null
       translations:
         - language: fr-FR
@@ -1566,47 +1566,6 @@ fields:
       data_type: character varying
       default_value: null
       max_length: 255
-      numeric_precision: null
-      numeric_scale: null
-      is_nullable: true
-      is_unique: false
-      is_primary_key: false
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: null
-      foreign_key_column: null
-  - collection: poi
-    field: tags
-    type: json
-    meta:
-      collection: poi
-      conditions: null
-      display: null
-      display_options: null
-      field: tags
-      group: null
-      hidden: false
-      interface: tags
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 10
-      special:
-        - cast-json
-      translations:
-        - language: fr-FR
-          translation: Étiquettes
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      name: tags
-      table: poi
-      data_type: json
-      default_value: null
-      max_length: null
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
@@ -1701,7 +1660,7 @@ fields:
         geometryType: Point
       readonly: false
       required: true
-      sort: 6
+      sort: 7
       special:
         - cast-json
       translations:
@@ -1720,6 +1679,47 @@ fields:
       numeric_scale: null
       is_nullable: true
       is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: poi
+    field: slug
+    type: string
+    meta:
+      collection: poi
+      conditions: null
+      display: null
+      display_options: null
+      field: slug
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        slug: true
+      readonly: false
+      required: true
+      sort: 5
+      special: null
+      translations:
+        - language: fr-FR
+          translation: Slug
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: slug
+      table: poi
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: true
       is_primary_key: false
       is_generated: false
       generation_expression: null

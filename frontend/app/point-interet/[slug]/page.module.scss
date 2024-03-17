@@ -1,0 +1,124 @@
+.metadata {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 0.5rem calc(1rem + var(--headband-border-radius)) 1rem;
+
+  color: var(--color-light);
+  font-size: 1rem;
+
+  text-align: center;
+}
+
+.category {
+  position: relative;
+
+  padding-left: 1rem;
+
+  color: var(--primary);
+  font-weight: 600;
+
+  text-transform: uppercase;
+}
+
+@mixin category-color {
+  display: block;
+
+  position: absolute;
+  top: calc(50% - 0.25rem);
+  left: 0;
+
+  width: 0.5rem;
+  height: 0.5rem;
+
+  border-radius: 50%;
+
+  content: '';
+}
+
+.association {
+  @include category-color;
+
+  background-color: var(--primary);
+}
+.restaurant {
+  @include category-color;
+
+  background-color: var(--red);
+}
+.shop {
+  @include category-color;
+
+  background-color: var(--orange);
+}
+.tourism {
+  @include category-color;
+
+  background-color: var(--green);
+}
+
+.main {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 768px;
+  margin: 0 auto;
+  margin-bottom: 1.5rem;
+  padding: 0 calc(1rem + var(--headband-border-radius));
+
+  flex: 1 1 auto;
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+
+  color: var(--primary);
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.external-links {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding-left: 1.25rem;
+
+  list-style: disc;
+
+  a {
+    color: var(--primary);
+
+    transition: all 0.4s ease-out;
+    &:hover {
+      color: var(--primary-hover);
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 1.25rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .main {
+    margin-bottom: 2rem;
+    padding: 0 calc(1.5rem + var(--headband-border-radius));
+  }
+
+  .metadata {
+    padding: 1rem calc(1rem + var(--headband-border-radius)) 1rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .main {
+    margin: 1rem auto 2rem;
+    padding: 0;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+}

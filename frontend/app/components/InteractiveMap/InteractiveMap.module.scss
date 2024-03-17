@@ -108,6 +108,15 @@
   font-family: var(--font-serif);
   font-size: 1.25rem;
   font-weight: 600;
+  a {
+    color: var(--primary);
+
+    transition: all 0.4s ease-out;
+    text-decoration: none;
+    &:hover {
+      color: var(--primary-hover);
+    }
+  }
 }
 
 .list-item-desc {
@@ -152,10 +161,19 @@
     margin-top: 0;
     margin-bottom: 0.5rem;
 
-    color: var(--primary);
     font-family: var(--font-serif);
     font-size: 1.25rem;
     font-weight: 600;
+
+    a {
+      color: var(--primary);
+
+      transition: all 0.4s ease-out;
+      text-decoration: none;
+      &:hover {
+        color: var(--primary-hover);
+      }
+    }
   }
   &-desc {
     width: 100%;

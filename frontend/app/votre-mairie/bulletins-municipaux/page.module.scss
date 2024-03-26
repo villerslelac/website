@@ -1,0 +1,98 @@
+.main {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.bulletins {
+  display: grid;
+
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+.bulletin {
+  display: flex;
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+
+  background-color: var(--background-secondary);
+}
+
+.bulletin-cover {
+  width: 100%;
+  max-width: 120px;
+  height: auto;
+
+  flex-shrink: 0;
+}
+
+.bulletin-name {
+  margin-bottom: 0.5rem;
+
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.bulletin-content {
+  padding: 1rem;
+
+  flex: 1;
+}
+
+.bulletin-link {
+  padding-right: 1.5em;
+
+  color: var(--primary);
+  &:after {
+    display: inline-flex;
+
+    position: relative;
+    left: 0.5em;
+
+    width: 0.75em;
+    height: 0.75em;
+    margin-right: -1em;
+
+    content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='%23262626'><path d='M24 24H0V0h24v24z' fill='none' /><path d='M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z'/></svg>");
+
+    flex-shrink: 0;
+  }
+  &:hover {
+    color: var(--primary-light);
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .bulletins {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .main {
+    padding: 1.5rem calc(1.5rem + var(--headband-border-radius));
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .main {
+    margin-bottom: 1.5rem;
+  }
+
+  .bulletins {
+    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .main {
+    padding: 2rem;
+  }
+}

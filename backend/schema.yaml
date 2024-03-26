@@ -2,6 +2,34 @@ version: 1
 directus: 10.10.4
 vendor: postgres
 collections:
+  - collection: bulletin
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: bulletin
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: menu_book
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: 9
+      sort_field: null
+      translations:
+        - language: fr-FR
+          translation: Bulletins
+          singular: bulletin
+          plural: bulletins
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: bulletin
   - collection: event
     meta:
       accountability: all
@@ -19,7 +47,7 @@ collections:
       note: null
       preview_url: null
       singleton: false
-      sort: null
+      sort: 6
       sort_field: null
       translations:
         - language: fr-FR
@@ -103,7 +131,7 @@ collections:
       note: null
       preview_url: null
       singleton: false
-      sort: null
+      sort: 7
       sort_field: null
       translations:
         - language: fr-FR
@@ -142,6 +170,86 @@ collections:
       versioning: false
     schema:
       name: post
+  - collection: report
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: report
+      color: null
+      display_template: null
+      group: report_folder
+      hidden: false
+      icon: draft
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: 1
+      sort_field: null
+      translations:
+        - language: fr-FR
+          translation: Compte rendus
+          singular: compte rendu
+          plural: compte rendus
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: report
+  - collection: report_files
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: report_files
+      color: null
+      display_template: null
+      group: report
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: 1
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: report_files
+  - collection: report_folder
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: report_folder
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: folder
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: 8
+      sort_field: null
+      translations:
+        - language: fr-FR
+          translation: Dossiers
+          singular: dossier
+          plural: dossiers
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: report_folder
   - collection: tags
     meta:
       accountability: all
@@ -151,7 +259,7 @@ collections:
       collapse: open
       collection: tags
       color: null
-      display_template: '{{name}}'
+      display_template: "{{name}}"
       group: post
       hidden: false
       icon: tag
@@ -171,6 +279,212 @@ collections:
     schema:
       name: tags
 fields:
+  - collection: bulletin
+    field: id
+    type: integer
+    meta:
+      collection: bulletin
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: bulletin
+      data_type: integer
+      default_value: nextval('bulletin_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: bulletin
+    field: name
+    type: string
+    meta:
+      collection: bulletin
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations:
+        - language: fr-FR
+          translation: Nom
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: name
+      table: bulletin
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: bulletin
+    field: cover
+    type: uuid
+    meta:
+      collection: bulletin
+      conditions: null
+      display: null
+      display_options: null
+      field: cover
+      group: null
+      hidden: false
+      interface: file-image
+      note: null
+      options:
+        defaultView:
+          bearing: 0
+          center:
+            lat: 0
+            lng: 0
+          pitch: 0
+          zoom: 0
+        geometryType: Point
+      readonly: false
+      required: false
+      sort: 4
+      special:
+        - file
+      translations:
+        - language: fr-FR
+          translation: Couverture
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: cover
+      table: bulletin
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: bulletin
+    field: file
+    type: uuid
+    meta:
+      collection: bulletin
+      conditions: null
+      display: null
+      display_options: null
+      field: file
+      group: null
+      hidden: false
+      interface: file
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 5
+      special:
+        - file
+      translations:
+        - language: fr-FR
+          translation: Fichier
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: file
+      table: bulletin
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: bulletin
+    field: year
+    type: integer
+    meta:
+      collection: bulletin
+      conditions: null
+      display: null
+      display_options: null
+      field: year
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: year
+      table: bulletin
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
   - collection: event
     field: id
     type: integer
@@ -223,7 +537,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
       readonly: true
       required: false
       sort: 2
@@ -928,7 +1242,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
       readonly: true
       required: false
       sort: 3
@@ -1188,14 +1502,14 @@ fields:
       conditions: null
       display: related-values
       display_options:
-        template: '{{title}}'
+        template: "{{title}}"
       field: parent_page
       group: null
       hidden: false
       interface: select-dropdown-m2o
       note: null
       options:
-        template: '{{title}}'
+        template: "{{title}}"
       readonly: false
       required: false
       sort: 10
@@ -1845,7 +2159,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
       readonly: true
       required: false
       sort: 3
@@ -2232,7 +2546,7 @@ fields:
       note: null
       options:
         enableCreate: false
-        template: '{{name}}'
+        template: "{{name}}"
       readonly: false
       required: true
       sort: 13
@@ -2311,6 +2625,464 @@ fields:
       max_length: null
       numeric_precision: null
       numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: id
+    type: integer
+    meta:
+      collection: report
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: report
+      data_type: integer
+      default_value: nextval('report_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: name
+    type: string
+    meta:
+      collection: report
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations:
+        - language: fr-FR
+          translation: Nom
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: name
+      table: report
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: files
+    type: alias
+    meta:
+      collection: report
+      conditions: null
+      display: null
+      display_options: null
+      field: files
+      group: null
+      hidden: false
+      interface: files
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 4
+      special:
+        - files
+      translations:
+        - language: fr-FR
+          translation: Fichiers
+      validation: null
+      validation_message: null
+      width: full
+  - collection: report
+    field: date
+    type: dateTime
+    meta:
+      collection: report
+      conditions: null
+      display: null
+      display_options: null
+      field: date
+      group: null
+      hidden: false
+      interface: datetime
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 3
+      special: null
+      translations:
+        - language: fr-FR
+          translation: Date
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: date
+      table: report
+      data_type: timestamp without time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report
+    field: folder
+    type: integer
+    meta:
+      collection: report
+      conditions: null
+      display: null
+      display_options: null
+      field: folder
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: "{{name}}"
+      readonly: false
+      required: true
+      sort: 6
+      special:
+        - m2o
+      translations:
+        - language: fr-FR
+          translation: Dossier
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: folder
+      table: report
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: report_folder
+      foreign_key_column: id
+  - collection: report_files
+    field: id
+    type: integer
+    meta:
+      collection: report_files
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: report_files
+      data_type: integer
+      default_value: nextval('report_files_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report_files
+    field: report_id
+    type: integer
+    meta:
+      collection: report_files
+      conditions: null
+      display: null
+      display_options: null
+      field: report_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: report_id
+      table: report_files
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: report
+      foreign_key_column: id
+  - collection: report_files
+    field: directus_files_id
+    type: uuid
+    meta:
+      collection: report_files
+      conditions: null
+      display: null
+      display_options: null
+      field: directus_files_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: directus_files_id
+      table: report_files
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: report_folder
+    field: id
+    type: integer
+    meta:
+      collection: report_folder
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: report_folder
+      data_type: integer
+      default_value: nextval('report_folder_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report_folder
+    field: name
+    type: string
+    meta:
+      collection: report_folder
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations:
+        - language: fr-FR
+          translation: Nom
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: name
+      table: report_folder
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report_folder
+    field: slug
+    type: string
+    meta:
+      collection: report_folder
+      conditions: null
+      display: null
+      display_options: null
+      field: slug
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        slug: true
+      readonly: false
+      required: true
+      sort: 4
+      special: null
+      translations:
+        - language: fr-FR
+          translation: Slug
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: slug
+      table: report_folder
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: report_folder
+    field: order
+    type: integer
+    meta:
+      collection: report_folder
+      conditions: null
+      display: null
+      display_options: null
+      field: order
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 3
+      special: null
+      translations:
+        - language: fr-FR
+          translation: Ordre
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: order
+      table: report_folder
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
       is_nullable: true
       is_unique: false
       is_primary_key: false
@@ -2413,11 +3185,11 @@ fields:
       options:
         presets:
           - name: Jaune
-            color: '#F8DA28'
+            color: "#F8DA28"
           - name: Bleu
-            color: '#0A58CA'
+            color: "#0A58CA"
           - name: Bleu foncé
-            color: '#02366B'
+            color: "#02366B"
       readonly: false
       required: true
       sort: 4
@@ -2443,6 +3215,48 @@ fields:
       foreign_key_table: null
       foreign_key_column: null
 relations:
+  - collection: bulletin
+    field: cover
+    related_collection: directus_files
+    meta:
+      junction_field: null
+      many_collection: bulletin
+      many_field: cover
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: bulletin
+      column: cover
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: bulletin_cover_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: bulletin
+    field: file
+    related_collection: directus_files
+    meta:
+      junction_field: null
+      many_collection: bulletin
+      many_field: file
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: bulletin
+      column: file
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: bulletin_file_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
   - collection: event
     field: user_created
     related_collection: directus_users
@@ -2588,5 +3402,68 @@ relations:
       foreign_key_table: tags
       foreign_key_column: id
       constraint_name: post_tag_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: report
+    field: folder
+    related_collection: report_folder
+    meta:
+      junction_field: null
+      many_collection: report
+      many_field: folder
+      one_allowed_collections: null
+      one_collection: report_folder
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: report
+      column: folder
+      foreign_key_table: report_folder
+      foreign_key_column: id
+      constraint_name: report_folder_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: report_files
+    field: directus_files_id
+    related_collection: directus_files
+    meta:
+      junction_field: report_id
+      many_collection: report_files
+      many_field: directus_files_id
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: report_files
+      column: directus_files_id
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: report_files_directus_files_id_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: report_files
+    field: report_id
+    related_collection: report
+    meta:
+      junction_field: directus_files_id
+      many_collection: report_files
+      many_field: report_id
+      one_allowed_collections: null
+      one_collection: report
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: files
+      sort_field: null
+    schema:
+      table: report_files
+      column: report_id
+      foreign_key_table: report
+      foreign_key_column: id
+      constraint_name: report_files_report_id_foreign
       on_update: NO ACTION
       on_delete: SET NULL

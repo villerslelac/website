@@ -1,9 +1,7 @@
-import { readFile } from '@directus/sdk';
 import clsx from 'clsx';
 import Link from 'next/link';
 
 import { Post as IPost } from '../../types';
-import directus from '../../utils/directus';
 import formatDate from '../../utils/formatDate';
 import { ContentBlock } from '../ContentBlock/ContentBlock';
 import styles from './Post.module.scss';
@@ -15,21 +13,16 @@ interface PostProps {
 }
 
 export const Post: React.FC<PostProps> = async ({ size, className, post }) => {
-  let featuredImage = undefined;
-  if (post.featured_image) {
-    featuredImage = await directus.request(readFile(post.featured_image));
-  }
-
   return (
     <article
       className={clsx(size == 'lg' ? styles.largePost : styles.post, className)}
     >
       <Link className={styles.imageLink} href={`/actualite/${post.slug}`}>
-        {featuredImage ? (
+        {post.featured_image ? (
           <img
             className={styles.image}
             src={`${process.env.DIRECTUS_URL}/assets/${post.featured_image}?key=og-image`}
-            alt={featuredImage.title}
+            alt={post.title}
           />
         ) : (
           <img

@@ -1,10 +1,8 @@
-import { readFile } from '@directus/sdk';
 import EventIcon from '@material-symbols/svg-400/rounded/location_on-fill.svg';
 import clsx from 'clsx';
 import Link from 'next/link';
 
 import { Event as IEvent } from '../../types';
-import directus from '../../utils/directus';
 import { ContentBlock } from '../ContentBlock/ContentBlock';
 import styles from './Event.module.scss';
 
@@ -34,11 +32,6 @@ export const Event: React.FC<EventProps> = async ({
   size,
   className,
 }) => {
-  let featuredImage = undefined;
-  if (size == 'lg' && event.featured_image) {
-    featuredImage = await directus.request(readFile(event.featured_image));
-  }
-
   const date = new Date(event.date);
   const day = date.getDate();
   const month = frenchMonths[date.getMonth()];
@@ -56,11 +49,11 @@ export const Event: React.FC<EventProps> = async ({
           <span className={styles.dateMonth}>{month}</span>
         </div>
         {size == 'lg' ? (
-          featuredImage ? (
+          event.featured_image ? (
             <img
               className={styles.image}
               src={`${process.env.DIRECTUS_URL}/assets/${event.featured_image}?key=event`}
-              alt={featuredImage.title}
+              alt={event.title}
             />
           ) : (
             <img

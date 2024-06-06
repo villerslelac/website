@@ -17,13 +17,36 @@ const slides = [
     title: 'Le Saut du Doubs',
     excerpt:
       'Au départ de Villers-le-Lac, le Doubs paresseux serpente au creux d’un val qui s’élargit entre monts et falaises. Les Bassins du Doubs constituent un paysage d’une incroyable beauté, qui voit des falaises de plus de quarante mètres plonger dans les eaux calmes, noires et profondes que sillonnent les bateaux.',
-    cover: 'http://via.placeholder.com/1200x630',
+    cover: '/decouvrir-villers-le-lac/le-saut-du-doubs.jpg',
+    link: '/decouvrir-villers-le-lac/le-saut-du-doubs',
   },
   {
     title: 'Le Musée de la Montre',
     excerpt:
       'Le musée de la montre présente les grandes époques de cet indispensable compagnon de l’homme, de ses origines en 1 500 à nos jours.',
-    cover: 'http://via.placeholder.com/1200x630',
+    cover: '/decouvrir-villers-le-lac/le-musee-de-la-montre.jpg',
+    link: '/decouvrir-villers-le-lac/le-musee-de-la-montre',
+  },
+  {
+    title: 'Fruitière à Comté',
+    excerpt:
+      'La fruitière à comté de Villers-le-Lac fut créée en 1870. Très tôt, les agriculteurs de notre village eurent l’idée de se regrouper pour fonder une coopérative.',
+    cover: '/decouvrir-villers-le-lac/fruitiere-a-comte.jpg',
+    link: '/decouvrir-villers-le-lac/fruitiere-a-comte',
+  },
+  {
+    title: 'Villers-le-Lac aux 4 églises',
+    excerpt:
+      'Villers-le-Lac compte 4 églises : l’église Saint Jean au centre ville, la chapelle Saint Joseph des Bassots, l’église Saint François de Sales au Chauffaud et Notre Dame des Neiges au Pissoux.',
+    cover: '/decouvrir-villers-le-lac/villers-le-lac-aux-4-eglises.jpg',
+    link: '/decouvrir-villers-le-lac/villers-le-lac-aux-4-eglises',
+  },
+  {
+    title: 'Loisirs et activités',
+    excerpt:
+      'Hiver comme été, venez découvrir les différentes activités à pratiquer seul ou en famille à Villers-le-lac au coeur des Montagnes du Jura : ski alpin, ski de fond, sorties raquettes, balades en traineau à chiens, randonnée, VTT, ski nautique, canoë, pêche',
+    cover: '/decouvrir-villers-le-lac/loisirs-et-activites.jpg',
+    link: '/decouvrir-villers-le-lac/loisirs-et-activites',
   },
 ];
 
@@ -77,7 +100,7 @@ export const DiscoverCard: React.FC<DiscoverCardProps> = ({ className }) => {
               </header>
               <div className={styles.excerpt}>{slide.excerpt}</div>
               <footer className={styles.footer}>
-                <Link href="#" className={styles.readMore}>
+                <Link href={slide.link} className={styles.readMore}>
                   Lire la suite
                 </Link>
               </footer>

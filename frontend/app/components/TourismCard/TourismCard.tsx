@@ -19,19 +19,34 @@ export const TourismCard: React.FC<TourismCardProps> = ({ className }) => {
       </div>
       <div className={styles.content}>
         <div className={styles.links}>
-          <Link href="#" className={styles.link}>
+          <Link
+            href="/decouvrir-villers-le-lac/le-saut-du-doubs"
+            className={styles.link}
+          >
             Le saut du Doubs
           </Link>
-          <Link href="#" className={styles.link}>
+          <Link
+            href="/decouvrir-villers-le-lac/le-musee-de-la-montre"
+            className={styles.link}
+          >
             Le musée de la Montre
           </Link>
-          <Link href="#" className={styles.link}>
+          <Link
+            href="/decouvrir-villers-le-lac/fruitiere-a-comte"
+            className={styles.link}
+          >
             Fruitière à Comté
           </Link>
-          <Link href="#" className={styles.link}>
+          <Link
+            href="/decouvrir-villers-le-lac/villers-le-lac-aux-4-eglises"
+            className={styles.link}
+          >
             Villers-le-Lac aux 4 églises
           </Link>
-          <Link href="#" className={styles.link}>
+          <Link
+            href="/decouvrir-villers-le-lac/loisirs-et-activites"
+            className={styles.link}
+          >
             Loisirs et activités
           </Link>
         </div>
@@ -41,7 +56,11 @@ export const TourismCard: React.FC<TourismCardProps> = ({ className }) => {
             <br />
             <span>à Villers-le-Lac</span>
           </h2>
-          <Button as={Link} href="#" variant="secondary">
+          <Button
+            as={Link}
+            href="/decouvrir-villers-le-lac/sejourner-a-villers-le-lac"
+            variant="secondary"
+          >
             En savoir plus
           </Button>
         </div>

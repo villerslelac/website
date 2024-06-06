@@ -73,31 +73,37 @@ const Home = async () => {
         </div>
       </div>
       <section className={styles.shortcuts}>
-        <a href="#" className={styles.shortcut}>
+        <a
+          href="/votre-mairie/bulletins-municipaux"
+          className={styles.shortcut}
+        >
           <span className={clsx(styles.icon, 'material-symbols-rounded')}>
             menu_book
           </span>
           <h3 className={styles.shortcutTitle}>Bulletins municipaux</h3>
         </a>
-        <a href="#" className={styles.shortcut}>
+        <a
+          href="/votre-mairie/seances-du-conseil-municipal"
+          className={styles.shortcut}
+        >
           <span className={clsx(styles.icon, 'material-symbols-rounded')}>
             groups
           </span>
           <h3 className={styles.shortcutTitle}>Séances du conseil municipal</h3>
         </a>
-        <a href="#" className={styles.shortcut}>
+        <a href="/carte-interactive" className={styles.shortcut}>
           <span className={clsx(styles.icon, 'material-symbols-rounded')}>
             hub
           </span>
           <h3 className={styles.shortcutTitle}>Associations</h3>
         </a>
-        <a href="#" className={styles.shortcut}>
+        <a href="/votre-mairie/marches-publics" className={styles.shortcut}>
           <span className={clsx(styles.icon, 'material-symbols-rounded')}>
             work
           </span>
           <h3 className={styles.shortcutTitle}>Marchés publics</h3>
         </a>
-        <a href="#" className={styles.shortcut}>
+        <a href="/vivre-a-villers/urbanisme" className={styles.shortcut}>
           <span className={clsx(styles.icon, 'material-symbols-rounded')}>
             home_work
           </span>
@@ -109,7 +115,7 @@ const Home = async () => {
           <div className={styles.contactIcon}>
             <NextIcon />
           </div>
-          <a href="#" className={styles.contactLink}>
+          <a href="/contact" className={styles.contactLink}>
             <span>Une question ?</span>
             <br />
             Contacter la mairie
@@ -165,7 +171,7 @@ const Home = async () => {
         </h2>
         <DiscoverCard />
         <div className={styles.discoverBtnContainer}>
-          <Button as={Link} href="#">
+          <Button as={Link} href="/decouvrir-villers-le-lac">
             Découvrir Villers-le-Lac
           </Button>
         </div>

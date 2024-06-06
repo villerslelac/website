@@ -119,6 +119,9 @@ export const Header: React.FC<HeaderProps> = ({ menu }) => {
           })}
         </ul>
       </nav>
+      {activeItem != null ? (
+        <div className={styles.backdrop} onClick={handleClose} />
+      ) : null}
     </header>
   );
 };

@@ -1,7 +1,5 @@
 'use server';
 
-import { cache } from 'react';
-
 import { readItems } from '@directus/sdk';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -15,7 +13,7 @@ type Props = {
   params: { slug: string };
 };
 
-const getReportFolder = cache(async (slug: string) => {
+const getReportFolder = async (slug: string) => {
   try {
     const folder = await directus.request(
       readItems('report_folder', {
@@ -31,9 +29,9 @@ const getReportFolder = cache(async (slug: string) => {
   } catch (error) {
     notFound();
   }
-});
+};
 
-const getReports = cache(async (id: number) => {
+const getReports = async (id: number) => {
   try {
     const reports = await directus.request(
       readItems('report', {
@@ -52,7 +50,7 @@ const getReports = cache(async (id: number) => {
   } catch (error) {
     notFound();
   }
-});
+};
 
 export const generateMetadata = async ({
   params,

@@ -1,7 +1,5 @@
 'use server';
 
-import { cache } from 'react';
-
 import { readItems } from '@directus/sdk';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -15,7 +13,7 @@ type Props = {
   params: { slug: string };
 };
 
-const getPoi = cache(async (slug: string) => {
+const getPoi = async (slug: string) => {
   try {
     const poi = await directus.request(
       readItems('poi', {
@@ -31,7 +29,7 @@ const getPoi = cache(async (slug: string) => {
   } catch (error) {
     notFound();
   }
-});
+};
 
 export const generateMetadata = async ({
   params,

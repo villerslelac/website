@@ -1,7 +1,5 @@
 'use server';
 
-import { cache } from 'react';
-
 import { readFile, readItems } from '@directus/sdk';
 import LocationIcon from '@material-symbols/svg-400/rounded/location_on-fill.svg';
 import { Metadata } from 'next';
@@ -17,7 +15,7 @@ type Props = {
   params: { slug: string };
 };
 
-const getEvent = cache(async (slug: string) => {
+const getEvent = async (slug: string) => {
   try {
     const event = await directus.request(
       readItems('event', {
@@ -33,7 +31,7 @@ const getEvent = cache(async (slug: string) => {
   } catch (error) {
     notFound();
   }
-});
+};
 
 export const generateMetadata = async ({
   params,

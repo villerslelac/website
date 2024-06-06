@@ -1,6 +1,6 @@
 'use server';
 
-import React, { cache } from 'react';
+import React from 'react';
 
 import { readItems } from '@directus/sdk';
 import { Metadata } from 'next';
@@ -11,7 +11,7 @@ import { Bulletins as TBulletins } from '../../types/bulletin';
 import directus from '../../utils/directus';
 import styles from './page.module.scss';
 
-const getBulletins = cache(async () => {
+const getBulletins = async () => {
   try {
     const bulletins = await directus.request(
       readItems('bulletin', {
@@ -31,7 +31,7 @@ const getBulletins = cache(async () => {
   } catch (error) {
     notFound();
   }
-});
+};
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return {

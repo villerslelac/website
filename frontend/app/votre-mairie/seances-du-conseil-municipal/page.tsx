@@ -1,6 +1,6 @@
 'use server';
 
-import React, { cache } from 'react';
+import React from 'react';
 
 import { readItems } from '@directus/sdk';
 import ArrowIcon from '@material-symbols/svg-400/rounded/arrow_forward.svg';
@@ -12,14 +12,14 @@ import { ReportFolders } from '../../types/report';
 import directus from '../../utils/directus';
 import styles from './page.module.scss';
 
-const getReportFolders = cache(async () => {
+const getReportFolders = async () => {
   try {
     const folders = await directus.request(readItems('report_folder'));
     return folders;
   } catch (error) {
     notFound();
   }
-});
+};
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return {

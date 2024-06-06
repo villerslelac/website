@@ -1,5 +1,3 @@
-import { cache } from 'react';
-
 import { readItem } from '@directus/sdk';
 import clsx from 'clsx';
 import type { Metadata } from 'next';
@@ -27,7 +25,7 @@ export const metadata: Metadata = {
     'Retrouvez tous les services et démarches, les infos pratiques, les actualités et événements de la Ville de Villers-le-Lac.',
 };
 
-const getMenu = cache(async () => {
+const getMenu = async () => {
   try {
     const menu = await directus.request(readItem('menu', 1));
     return menu as {
@@ -43,7 +41,7 @@ const getMenu = cache(async () => {
   } catch (error) {
     return { items: [] };
   }
-});
+};
 
 export default async function RootLayout({
   children,

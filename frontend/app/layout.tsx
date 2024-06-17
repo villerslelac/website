@@ -2,6 +2,7 @@ import { readItem } from '@directus/sdk';
 import clsx from 'clsx';
 import type { Metadata } from 'next';
 import { Great_Vibes, Yeseva_One } from 'next/font/google';
+import NextTopLoader from 'nextjs-toploader';
 
 import { Footer, Header } from './components';
 import './styles/main.scss';
@@ -53,6 +54,7 @@ export default async function RootLayout({
   return (
     <html lang="fr">
       <body className={clsx(yesevaOne.variable, greatVibes.variable)}>
+        <NextTopLoader color="#02366b" showSpinner={false} />
         <Header menu={menu} />
         {children}
         <Footer />

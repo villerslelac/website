@@ -39,6 +39,10 @@ body {
   }
 }
 
+#nprogress {
+  z-index: 1040 !important;
+}
+
 @media screen and (min-width: 992px) {
   body.no-scroll {
     overflow: visible;

@@ -48,6 +48,23 @@ Additional transformations:
 ```
 
 ```
+Key: event
+Fit: Cover
+Width: 1000
+Height: 1414
+Quality: 100%
+Additional transformations:
+[
+    [
+        "flatten",
+        {
+            "background": "#ffffff"
+        }
+    ]
+]
+```
+
+```
 Key: council-member
 Fit: Cover
 Width: 512

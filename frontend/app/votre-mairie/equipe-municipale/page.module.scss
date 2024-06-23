@@ -1,0 +1,130 @@
+.main {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 992px;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.section {
+  margin-top: 0;
+  &:not(:last-of-type) {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 1rem;
+
+  color: var(--primary);
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.members {
+  display: grid;
+
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.member {
+  &-image {
+    width: 100%;
+    max-width: 256px;
+    margin-bottom: 0.5rem;
+
+    border-radius: 1rem;
+  }
+  &-name {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+
+    color: var(--primary);
+    font-size: 1.125rem;
+    font-weight: 700;
+  }
+  &-position {
+    sup,
+    sub {
+      position: relative;
+      top: -0.4em;
+
+      font-size: 0.875em;
+
+      vertical-align: baseline;
+    }
+
+    sub {
+      top: 0.4em;
+    }
+
+    p:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .members {
+    display: grid;
+
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 1.875rem;
+  }
+
+  .section {
+    &:not(:last-of-type) {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .members {
+    gap: 1.5rem;
+  }
+
+  .members-small {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .main {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .main {
+    padding: 2rem;
+  }
+
+  .section {
+    &:not(:last-of-type) {
+      margin-bottom: 3rem;
+    }
+  }
+
+  .title {
+    font-size: 2.25rem;
+  }
+
+  .members {
+    gap: 2rem;
+  }
+
+  .member {
+    &-position {
+      font-size: 1rem;
+    }
+  }
+}

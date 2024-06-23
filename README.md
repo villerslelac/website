@@ -47,6 +47,16 @@ Additional transformations:
 ]
 ```
 
+```
+Key: council-member
+Fit: Cover
+Width: 512
+Height: 656
+Quality: 100%
+Additional transformations:
+[]
+```
+
 ### Running the Application
 
 The frontend is a [Next.js](https://nextjs.org/) project created with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). To run the application, follow these steps:

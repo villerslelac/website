@@ -19,7 +19,7 @@ collections:
       note: null
       preview_url: null
       singleton: false
-      sort: 9
+      sort: 8
       sort_field: null
       translations:
         - language: fr-FR
@@ -30,6 +30,34 @@ collections:
       versioning: false
     schema:
       name: bulletin
+  - collection: council_member
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: council_member
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: person
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: 7
+      sort_field: sort
+      translations:
+        - language: fr-FR
+          translation: Élus
+          singular: élu
+          plural: élus
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: council_member
   - collection: event
     meta:
       accountability: all
@@ -47,7 +75,7 @@ collections:
       note: null
       preview_url: null
       singleton: false
-      sort: 6
+      sort: 4
       sort_field: null
       translations:
         - language: fr-FR
@@ -131,7 +159,7 @@ collections:
       note: null
       preview_url: null
       singleton: false
-      sort: 7
+      sort: 5
       sort_field: null
       translations:
         - language: fr-FR
@@ -239,7 +267,7 @@ collections:
       note: null
       preview_url: null
       singleton: false
-      sort: 8
+      sort: 6
       sort_field: null
       translations:
         - language: fr-FR
@@ -259,7 +287,7 @@ collections:
       collapse: open
       collection: tags
       color: null
-      display_template: "{{name}}"
+      display_template: '{{name}}'
       group: post
       hidden: false
       icon: tag
@@ -485,6 +513,298 @@ fields:
       has_auto_increment: false
       foreign_key_table: null
       foreign_key_column: null
+  - collection: council_member
+    field: id
+    type: integer
+    meta:
+      collection: council_member
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: council_member
+      data_type: integer
+      default_value: nextval('council_member_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: council_member
+    field: sort
+    type: integer
+    meta:
+      collection: council_member
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sort
+      table: council_member
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: council_member
+    field: firstname
+    type: string
+    meta:
+      collection: council_member
+      conditions: null
+      display: null
+      display_options: null
+      field: firstname
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 5
+      special: null
+      translations:
+        - language: fr-FR
+          translation: Prénom
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: firstname
+      table: council_member
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: council_member
+    field: lastname
+    type: string
+    meta:
+      collection: council_member
+      conditions: null
+      display: null
+      display_options: null
+      field: lastname
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: 6
+      special: null
+      translations:
+        - language: fr-FR
+          translation: Nom
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: lastname
+      table: council_member
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: council_member
+    field: group
+    type: string
+    meta:
+      collection: council_member
+      conditions: null
+      display: null
+      display_options: null
+      field: group
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: Maire
+            value: MAYOR
+          - text: Adjoint
+            value: DEPUTY
+          - text: Conseiller délégué
+            value: DELEGATE
+          - text: Conseiller
+            value: COUNCILOR
+      readonly: false
+      required: true
+      sort: 4
+      special: null
+      translations:
+        - language: fr-FR
+          translation: Groupe
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: group
+      table: council_member
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: council_member
+    field: profile_picture
+    type: uuid
+    meta:
+      collection: council_member
+      conditions: null
+      display: null
+      display_options: null
+      field: profile_picture
+      group: null
+      hidden: false
+      interface: file-image
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 3
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      name: profile_picture
+      table: council_member
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: council_member
+    field: position
+    type: text
+    meta:
+      collection: council_member
+      conditions: null
+      display: null
+      display_options: null
+      field: position
+      group: null
+      hidden: false
+      interface: input-rich-text-html
+      note: null
+      options:
+        softLength: 255
+        toolbar:
+          - bold
+          - code
+          - fullscreen
+          - italic
+          - strikethrough
+          - subscript
+          - superscript
+          - underline
+      readonly: false
+      required: true
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: position
+      table: council_member
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
   - collection: event
     field: id
     type: integer
@@ -537,7 +857,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
       sort: 2
@@ -1242,7 +1562,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
       sort: 3
@@ -1502,14 +1822,14 @@ fields:
       conditions: null
       display: related-values
       display_options:
-        template: "{{title}}"
+        template: '{{title}}'
       field: parent_page
       group: null
       hidden: false
       interface: select-dropdown-m2o
       note: null
       options:
-        template: "{{title}}"
+        template: '{{title}}'
       readonly: false
       required: false
       sort: 10
@@ -2159,7 +2479,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
       readonly: true
       required: false
       sort: 3
@@ -2546,7 +2866,7 @@ fields:
       note: null
       options:
         enableCreate: false
-        template: "{{name}}"
+        template: '{{name}}'
       readonly: false
       required: true
       sort: 13
@@ -2790,7 +3110,7 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        template: "{{name}}"
+        template: '{{name}}'
       readonly: false
       required: true
       sort: 6
@@ -3185,11 +3505,11 @@ fields:
       options:
         presets:
           - name: Jaune
-            color: "#F8DA28"
+            color: '#F8DA28'
           - name: Bleu
-            color: "#0A58CA"
+            color: '#0A58CA'
           - name: Bleu foncé
-            color: "#02366B"
+            color: '#02366B'
       readonly: false
       required: true
       sort: 4
@@ -3255,6 +3575,27 @@ relations:
       foreign_key_table: directus_files
       foreign_key_column: id
       constraint_name: bulletin_file_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: council_member
+    field: profile_picture
+    related_collection: directus_files
+    meta:
+      junction_field: null
+      many_collection: council_member
+      many_field: profile_picture
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: council_member
+      column: profile_picture
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: council_member_profile_picture_foreign
       on_update: NO ACTION
       on_delete: SET NULL
   - collection: event

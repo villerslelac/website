@@ -1,8 +1,10 @@
 import EventIcon from '@material-symbols/svg-400/rounded/location_on-fill.svg';
+import { Link } from '@remix-run/react';
 import clsx from 'clsx';
-import Link from 'next/link';
 
-import { Event as IEvent } from '../../types';
+import { Event as IEvent } from 'app/types';
+import { useRootContext } from 'app/utils/useRootContext';
+
 import { ContentBlock } from '../ContentBlock/ContentBlock';
 import styles from './Event.module.scss';
 
@@ -27,11 +29,8 @@ const frenchMonths = [
   'Déc.',
 ];
 
-export const Event: React.FC<EventProps> = async ({
-  event,
-  size,
-  className,
-}) => {
+export const Event: React.FC<EventProps> = ({ event, size, className }) => {
+  const { directusUrl } = useRootContext();
   const date = new Date(event.date);
   const day = date.getDate();
   const month = frenchMonths[date.getMonth()];
@@ -43,7 +42,7 @@ export const Event: React.FC<EventProps> = async ({
         className,
       )}
     >
-      <Link className={styles.imageLink} href={`/evenements/${event.slug}`}>
+      <Link className={styles.imageLink} to={`/evenements/${event.slug}`}>
         <div className={styles.date}>
           <span className={styles.dateDay}>{day}</span>
           <span className={styles.dateMonth}>{month}</span>
@@ -52,7 +51,7 @@ export const Event: React.FC<EventProps> = async ({
           event.featured_image ? (
             <img
               className={styles.image}
-              src={`${process.env.DIRECTUS_URL}/assets/${event.featured_image}?key=event`}
+              src={`${directusUrl}/assets/${event.featured_image}?key=event`}
               alt={event.title}
             />
           ) : (
@@ -64,7 +63,7 @@ export const Event: React.FC<EventProps> = async ({
           )
         ) : null}
       </Link>
-      <Link className={styles.content} href={`/evenements/${event.slug}`}>
+      <Link className={styles.content} to={`/evenements/${event.slug}`}>
         <h3 className={styles.title}>{event.title}</h3>
         {size == 'lg' ? (
           <ContentBlock className={styles.excerpt} html={event.excerpt} />

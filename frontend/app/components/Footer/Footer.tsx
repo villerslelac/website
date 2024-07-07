@@ -1,5 +1,4 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@remix-run/react';
 
 import styles from './Footer.module.scss';
 
@@ -61,8 +60,8 @@ export const Footer: React.FC = () => (
     <div className={styles.wrapper}>
       <div className={styles.body}>
         <div className={styles.logo}>
-          <Link href="/">
-            <Image
+          <Link to="/">
+            <img
               src="/villers-le-lac-logo.svg"
               alt="Logo de Villers-le-Lac"
               width={120}
@@ -79,13 +78,13 @@ export const Footer: React.FC = () => (
         <div className={styles.links}>
           <ul className={styles.linksList}>
             <li>
-              <Link href="/contact">Nous contacter</Link>
+              <Link to="/contact">Nous contacter</Link>
             </li>
             <li>
-              <Link href="/mentions-legales">Mentions légales</Link>
+              <Link to="/mentions-legales">Mentions légales</Link>
             </li>
             <li>
-              <Link href="/donnees-personnelles">Données personnelles</Link>
+              <Link to="/donnees-personnelles">Données personnelles</Link>
             </li>
           </ul>
         </div>

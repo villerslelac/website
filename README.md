@@ -76,7 +76,7 @@ Additional transformations:
 
 ### Running the Application
 
-The frontend is a [Next.js](https://nextjs.org/) project created with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). To run the application, follow these steps:
+The frontend is a [Remix](https://remix.run) project. To run the application, follow these steps:
 
 ```sh
 cd frontend
@@ -84,6 +84,6 @@ pnpm install
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to view the application and begin coding in your favorite code editor.
+Open [http://localhost:5173](http://localhost:5173) in your browser to view the application and begin coding in your favorite code editor.
 
 Remember to configure environment variables located in `.env.local`.

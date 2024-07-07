@@ -1,8 +1,5 @@
-'use client';
-
+import { Link } from '@remix-run/react';
 import clsx from 'clsx';
-import Image from 'next/image';
-import Link from 'next/link';
 
 import { Button } from '../Button/Button';
 import styles from './TourismCard.module.scss';
@@ -15,36 +12,36 @@ export const TourismCard: React.FC<TourismCardProps> = ({ className }) => {
   return (
     <div className={clsx(className, styles.card)}>
       <div className={styles.image}>
-        <Image src="/tourism.jpg" alt="Tourisme" width={1136} height={754} />
+        <img src="/tourism.jpg" alt="Tourisme" width={1136} height={754} />
       </div>
       <div className={styles.content}>
         <div className={styles.links}>
           <Link
-            href="/decouvrir-villers-le-lac/le-saut-du-doubs"
+            to="/decouvrir-villers-le-lac/le-saut-du-doubs"
             className={styles.link}
           >
             Le saut du Doubs
           </Link>
           <Link
-            href="/decouvrir-villers-le-lac/le-musee-de-la-montre"
+            to="/decouvrir-villers-le-lac/le-musee-de-la-montre"
             className={styles.link}
           >
             Le musée de la Montre
           </Link>
           <Link
-            href="/decouvrir-villers-le-lac/fruitiere-a-comte"
+            to="/decouvrir-villers-le-lac/fruitiere-a-comte"
             className={styles.link}
           >
             Fruitière à Comté
           </Link>
           <Link
-            href="/decouvrir-villers-le-lac/villers-le-lac-aux-4-eglises"
+            to="/decouvrir-villers-le-lac/villers-le-lac-aux-4-eglises"
             className={styles.link}
           >
             Villers-le-Lac aux 4 églises
           </Link>
           <Link
-            href="/decouvrir-villers-le-lac/loisirs-et-activites"
+            to="/decouvrir-villers-le-lac/loisirs-et-activites"
             className={styles.link}
           >
             Loisirs et activités
@@ -58,7 +55,7 @@ export const TourismCard: React.FC<TourismCardProps> = ({ className }) => {
           </h2>
           <Button
             as={Link}
-            href="/decouvrir-villers-le-lac/sejourner-a-villers-le-lac"
+            to="/decouvrir-villers-le-lac/sejourner-a-villers-le-lac"
             variant="secondary"
           >
             En savoir plus

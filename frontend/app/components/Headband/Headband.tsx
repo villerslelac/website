@@ -1,3 +1,4 @@
+import { Link } from '@remix-run/react';
 import clsx from 'clsx';
 
 import styles from './Headband.module.scss';
@@ -16,11 +17,11 @@ export const Headband = ({ title, breadcrumb, className }: HeadbandProps) => (
     {breadcrumb && breadcrumb.length > 0 ? (
       <ul className={styles.breadcrumb}>
         <li>
-          <a href="/">Accueil</a>
+          <Link to="/">Accueil</Link>
         </li>
         {breadcrumb.map(({ link, label }, idx) => (
           <li key={idx}>
-            <a href={link}>{label}</a>
+            <Link to={link}>{label}</Link>
           </li>
         ))}
       </ul>

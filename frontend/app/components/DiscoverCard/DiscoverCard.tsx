@@ -1,10 +1,8 @@
-'use client';
-
 import { useEffect, useRef, useState } from 'react';
 
 import ArrowIcon from '@material-symbols/svg-400/rounded/trending_flat.svg';
+import { Link } from '@remix-run/react';
 import clsx from 'clsx';
-import Link from 'next/link';
 
 import styles from './DiscoverCard.module.scss';
 
@@ -83,11 +81,10 @@ export const DiscoverCard: React.FC<DiscoverCardProps> = ({ className }) => {
             key={idx}
             style={{
               opacity: currentIdx === idx ? 1 : 0,
-              zIndex: 1,
+              zIndex: currentIdx === idx ? 2 : 1,
             }}
           >
-            <Link className={styles.imageLink} href="#">
-              {/* eslint-disable @next/next/no-img-element */}
+            <Link className={styles.imageLink} to="#">
               <img
                 className={styles.image}
                 src={slide.cover}
@@ -100,7 +97,7 @@ export const DiscoverCard: React.FC<DiscoverCardProps> = ({ className }) => {
               </header>
               <div className={styles.excerpt}>{slide.excerpt}</div>
               <footer className={styles.footer}>
-                <Link href={slide.link} className={styles.readMore}>
+                <Link to={slide.link} className={styles.readMore}>
                   Lire la suite
                 </Link>
               </footer>

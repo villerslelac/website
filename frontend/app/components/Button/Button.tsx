@@ -1,9 +1,7 @@
-'use client';
-
 import React, { ElementType } from 'react';
 
+import { Link } from '@remix-run/react';
 import clsx from 'clsx';
-import Link from 'next/link';
 
 import styles from './Button.module.scss';
 
@@ -13,18 +11,20 @@ interface AsProp<As extends ElementType = ElementType> {
 }
 
 interface ButtonProps extends React.HTMLAttributes<HTMLElement>, AsProp {
-  href?: string;
   variant?: 'primary' | 'secondary';
+  to?: string;
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ children, className, as, variant = 'primary', ...props }, ref) => {
-    if (props.href) {
-      const { href, ...rest } = props;
+    if (props.to) {
+      const { to, ...rest } = props;
       return (
         <Link
           {...rest}
-          href={href}
+          to={to}
           ref={ref as React.Ref<HTMLAnchorElement>}
           className={clsx(className, styles.button, styles[variant])}
         >

@@ -1,7 +1,5 @@
-'use client';
-
+import { Link } from '@remix-run/react';
 import clsx from 'clsx';
-import Link from 'next/link';
 
 import { Button } from '../Button/Button';
 import styles from './InteractiveMapCard.module.scss';
@@ -19,7 +17,7 @@ export const InteractiveMapCard: React.FC<InteractiveMapCardProps> = ({
         <h2 className={styles.title}>Carte interactive</h2>
         <Button
           as={Link}
-          href="/carte-interactive"
+          to="/carte-interactive"
           variant="secondary"
           className={styles.button}
         >

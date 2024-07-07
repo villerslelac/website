@@ -4,6 +4,7 @@ export { DiscoverCard } from './DiscoverCard/DiscoverCard';
 export { Event } from './Event/Event';
 export { Footer } from './Footer/Footer';
 export { Header } from './Header/Header';
+export { InteractiveMap } from './InteractiveMap/InteractiveMap.client';
 export { InteractiveMapCard } from './InteractiveMapCard/InteractiveMapCard';
 export { TourismCard } from './TourismCard/TourismCard';
 export { ContentBlock } from './ContentBlock/ContentBlock';

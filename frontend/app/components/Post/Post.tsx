@@ -1,8 +1,10 @@
+import { Link } from '@remix-run/react';
 import clsx from 'clsx';
-import Link from 'next/link';
 
-import { Post as IPost } from '../../types';
-import formatDate from '../../utils/formatDate';
+import { Post as IPost } from 'app/types';
+import formatDate from 'app/utils/formatDate';
+import { useRootContext } from 'app/utils/useRootContext';
+
 import { ContentBlock } from '../ContentBlock/ContentBlock';
 import styles from './Post.module.scss';
 
@@ -12,16 +14,18 @@ interface PostProps {
   className?: string;
 }
 
-export const Post: React.FC<PostProps> = async ({ size, className, post }) => {
+export const Post: React.FC<PostProps> = ({ size, className, post }) => {
+  const { directusUrl } = useRootContext();
+
   return (
     <article
       className={clsx(size == 'lg' ? styles.largePost : styles.post, className)}
     >
-      <Link className={styles.imageLink} href={`/actualite/${post.slug}`}>
+      <Link className={styles.imageLink} to={`/actualite/${post.slug}`}>
         {post.featured_image ? (
           <img
             className={styles.image}
-            src={`${process.env.DIRECTUS_URL}/assets/${post.featured_image}?key=og-image`}
+            src={`${directusUrl}/assets/${post.featured_image}?key=og-image`}
             alt={post.title}
           />
         ) : (
@@ -32,7 +36,7 @@ export const Post: React.FC<PostProps> = async ({ size, className, post }) => {
           />
         )}
       </Link>
-      <Link className={styles.content} href={`/actualite/${post.slug}`}>
+      <Link className={styles.content} to={`/actualite/${post.slug}`}>
         <header>
           <div className={styles.tags}>
             <span className={styles.tag}>

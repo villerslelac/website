@@ -91,3 +91,5 @@ const Event = () => {
 };
 
 export default Event;
+
+export { ErrorBoundary } from 'app/components';

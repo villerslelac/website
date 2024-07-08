@@ -110,3 +110,5 @@ const AllReports = () => {
 };
 
 export default AllReports;
+
+export { ErrorBoundary } from 'app/components';

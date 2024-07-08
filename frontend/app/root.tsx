@@ -11,7 +11,7 @@ import {
   useLoaderData,
 } from '@remix-run/react';
 
-import { Footer, Header } from 'app/components';
+import { Footer, Header, MainErrorBoundary } from 'app/components';
 import 'app/styles/main.scss';
 import { Menu } from 'app/types';
 import directus from 'app/utils/directus';
@@ -49,7 +49,7 @@ export const loader = async () => {
   });
 };
 
-export default function App() {
+export const App = () => {
   const { menu, env } = useLoaderData<typeof loader>();
 
   return (
@@ -86,4 +86,36 @@ export default function App() {
       </body>
     </html>
   );
-}
+};
+
+export default App;
+
+export const ErrorBoundary = () => {
+  return (
+    <html lang="fr">
+      <head>
+        <meta charSet="utf-8" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Yeseva+One&display=swap"
+          rel="stylesheet"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Header menu={{ items: [] }} />
+        <MainErrorBoundary />
+        <Footer />
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+};

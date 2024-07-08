@@ -1,0 +1,55 @@
+.main {
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  padding: 1rem;
+
+  text-align: center;
+
+  gap: 1rem;
+}
+
+.status {
+  color: var(--primary);
+  font-size: 5rem;
+  font-weight: 700;
+  line-height: 1em;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.desc {
+  color: var(--color-light);
+}
+
+.link {
+  display: inline-block;
+
+  color: var(--primary);
+
+  transition: all 0.4s ease-out;
+  &:hover {
+    color: var(--primary-hover);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .main {
+    margin-bottom: 1.5rem;
+    padding: 2rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .main {
+    padding: 3rem;
+  }
+}

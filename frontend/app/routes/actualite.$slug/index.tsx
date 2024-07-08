@@ -90,3 +90,5 @@ const Post = () => {
 };
 
 export default Post;
+
+export { ErrorBoundary } from 'app/components';

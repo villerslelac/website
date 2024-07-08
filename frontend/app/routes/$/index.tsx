@@ -110,3 +110,5 @@ const Page = () => {
 };
 
 export default Page;
+
+export { ErrorBoundary } from 'app/components';

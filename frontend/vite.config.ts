@@ -3,7 +3,7 @@ import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import svgr from 'vite-plugin-svgr';
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [
     remix({
       future: {
@@ -47,6 +47,7 @@ export default defineConfig({
   css: {
     modules: {
       localsConvention: 'camelCase',
+      generateScopedName: mode === 'production' ? '[hash:base64:6]' : '[local]_[hash:base64:5]'
     },
   },
-});
+}));

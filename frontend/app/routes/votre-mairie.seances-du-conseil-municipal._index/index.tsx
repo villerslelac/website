@@ -1,7 +1,7 @@
 import { readItems } from '@directus/sdk';
 import ArrowIcon from '@material-symbols/svg-400/rounded/arrow_forward.svg';
 import { MetaFunction } from '@remix-run/node';
-import { json, useLoaderData } from '@remix-run/react';
+import { Link, json, useLoaderData } from '@remix-run/react';
 
 import { Headband } from 'app/components';
 import { ReportFolders } from 'app/types/report';
@@ -50,14 +50,14 @@ const Folders = () => {
         <ul className={styles.links}>
           {folders.map((folder) => (
             <li className={styles.link} key={folder.id}>
-              <a
-                href={`/votre-mairie/seances-du-conseil-municipal/${folder.slug}`}
+              <Link
+                to={`/votre-mairie/seances-du-conseil-municipal/${folder.slug}`}
               >
                 <span>{folder.name}</span>
                 <span className={styles.arrowIcon}>
                   <ArrowIcon width="2rem" height="2rem" />
                 </span>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

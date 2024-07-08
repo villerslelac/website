@@ -1,4 +1,7 @@
 .main {
+  display: flex;
+  flex-direction: column;
+
   box-sizing: border-box;
   width: 100%;
   max-width: 992px;
@@ -7,12 +10,76 @@
   padding: 0 calc(1rem + var(--headband-border-radius));
 
   flex: 1 1 auto;
+  gap: 1rem;
+}
+
+.links {
+  display: grid;
+
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+.link {
+  a {
+    display: flex;
+    flex-direction: column;
+
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: 1.5rem;
+
+    border: 1px solid var(--border);
+    border-radius: var(--card-border-radius);
+
+    background-color: var(--background-secondary);
+
+    color: var(--primary);
+    font-size: 1.25rem;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    gap: 1rem;
+    justify-content: space-between;
+    &:hover {
+      background-color: var(--border);
+    }
+  }
+}
+
+.arrow-icon {
+  display: block;
+
+  text-align: right;
+  svg {
+    fill: var(--primary);
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .links {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media screen and (min-width: 992px) {
   .main {
     margin-bottom: 2rem;
     padding: 0 calc(1.5rem + var(--headband-border-radius));
+
+    gap: 1.5rem;
+  }
+
+  .links {
+    gap: 1.5rem;
   }
 }
 
@@ -20,5 +87,12 @@
   .main {
     margin: 1rem auto 2rem;
     padding: 0;
+
+    gap: 2rem;
+  }
+
+  .links {
+    gap: 1.5rem;
+    grid-template-columns: repeat(4, 1fr);
   }
 }

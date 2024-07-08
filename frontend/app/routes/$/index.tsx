@@ -1,6 +1,7 @@
 import { readItems } from '@directus/sdk';
+import ArrowIcon from '@material-symbols/svg-400/rounded/arrow_forward.svg';
 import { LoaderFunctionArgs, MetaFunction } from '@remix-run/node';
-import { json, useLoaderData } from '@remix-run/react';
+import { Link, json, useLoaderData } from '@remix-run/react';
 
 import { ContentBlock, Headband } from 'app/components';
 import type { Page as PageType } from 'app/types';
@@ -30,6 +31,26 @@ const getPage = async (slug: string) => {
       });
     }
     return page[0] as PageType;
+  } catch (error) {
+    throw new Response('Not Found', {
+      status: 404,
+      statusText: 'Not Found',
+    });
+  }
+};
+
+const getSubPages = async (id: number) => {
+  try {
+    const subPages = await directus.request(
+      readItems('page', {
+        filter: {
+          parent_page: {
+            _eq: id,
+          },
+        },
+      }),
+    );
+    return subPages as PageType[];
   } catch (error) {
     throw new Response('Not Found', {
       status: 404,
@@ -68,7 +89,8 @@ const flattenPages = (obj: any): PartialPage[] => {
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   const pathname = params['*'] ?? '';
-  const slug = pathname.split('/')[0] ?? '';
+  const splitedPathname = pathname.split('/') ?? [];
+  const slug = splitedPathname[splitedPathname.length - 1];
   const page = await getPage(slug);
 
   // Check tree structure of website pages
@@ -77,7 +99,9 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
     throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
   }
 
-  return json({ page, breadcrumb });
+  const subPages = await getSubPages(page.id);
+
+  return json({ page, subPages, breadcrumb });
 };
 
 export const meta: MetaFunction<typeof loader> = ({ matches, data }) => {
@@ -91,7 +115,7 @@ export const meta: MetaFunction<typeof loader> = ({ matches, data }) => {
 };
 
 const Page = () => {
-  const { page, breadcrumb } = useLoaderData<typeof loader>();
+  const { page, subPages, breadcrumb } = useLoaderData<typeof loader>();
 
   return (
     <>
@@ -103,7 +127,21 @@ const Page = () => {
         }))}
       />
       <main className={styles.main}>
-        <ContentBlock html={page.content} />
+        {subPages.length > 0 ? (
+          <ul className={styles.links}>
+            {subPages.map((subPage) => (
+              <li className={styles.link} key={subPage.id}>
+                <Link to={subPage.slug}>
+                  <span>{subPage.title}</span>
+                  <span className={styles.arrowIcon}>
+                    <ArrowIcon width="2rem" height="2rem" />
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+        {page.content ? <ContentBlock html={page.content} /> : null}{' '}
       </main>
     </>
   );

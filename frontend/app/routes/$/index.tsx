@@ -1,10 +1,10 @@
 import { readItems } from '@directus/sdk';
 import ArrowIcon from '@material-symbols/svg-400/rounded/arrow_forward.svg';
 import { LoaderFunctionArgs, MetaFunction } from '@remix-run/node';
-import { Link, json, useLoaderData } from '@remix-run/react';
+import { Link, json, useLoaderData, useMatches } from '@remix-run/react';
 
 import { ContentBlock, Headband } from 'app/components';
-import type { Page as PageType } from 'app/types';
+import type { Menu, Page as PageType } from 'app/types';
 import directus from 'app/utils/directus';
 
 import styles from './index.module.scss';
@@ -31,26 +31,6 @@ const getPage = async (slug: string) => {
       });
     }
     return page[0] as PageType;
-  } catch (error) {
-    throw new Response('Not Found', {
-      status: 404,
-      statusText: 'Not Found',
-    });
-  }
-};
-
-const getSubPages = async (id: number) => {
-  try {
-    const subPages = await directus.request(
-      readItems('page', {
-        filter: {
-          parent_page: {
-            _eq: id,
-          },
-        },
-      }),
-    );
-    return subPages as PageType[];
   } catch (error) {
     throw new Response('Not Found', {
       status: 404,
@@ -88,7 +68,10 @@ const flattenPages = (obj: any): PartialPage[] => {
 };
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
-  const pathname = params['*'] ?? '';
+  let pathname = params['*'] ?? '';
+  if (pathname.endsWith('/')) {
+    pathname = pathname.slice(0, pathname.length - 1);
+  }
   const splitedPathname = pathname.split('/') ?? [];
   const slug = splitedPathname[splitedPathname.length - 1];
   const page = await getPage(slug);
@@ -99,9 +82,7 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
     throw new Response('Not Found', { status: 404, statusText: 'Not Found' });
   }
 
-  const subPages = await getSubPages(page.id);
-
-  return json({ page, subPages, breadcrumb });
+  return json({ page, breadcrumb });
 };
 
 export const meta: MetaFunction<typeof loader> = ({ matches, data }) => {
@@ -115,7 +96,15 @@ export const meta: MetaFunction<typeof loader> = ({ matches, data }) => {
 };
 
 const Page = () => {
-  const { page, subPages, breadcrumb } = useLoaderData<typeof loader>();
+  const { page, breadcrumb } = useLoaderData<typeof loader>();
+  const matches = useMatches();
+
+  const parentData = matches.find((match) => match.id === 'root')?.data as {
+    menu?: Menu;
+  };
+  const menu = parentData?.menu;
+  const subPages =
+    menu?.items?.find((item) => item.link.slice(1) == page.slug)?.items ?? [];
 
   return (
     <>
@@ -129,10 +118,10 @@ const Page = () => {
       <main className={styles.main}>
         {subPages.length > 0 ? (
           <ul className={styles.links}>
-            {subPages.map((subPage) => (
-              <li className={styles.link} key={subPage.id}>
-                <Link to={subPage.slug}>
-                  <span>{subPage.title}</span>
+            {subPages.map((subPage, idx) => (
+              <li className={styles.link} key={idx}>
+                <Link to={subPage.link}>
+                  <span>{subPage.label}</span>
                   <span className={styles.arrowIcon}>
                     <ArrowIcon width="2rem" height="2rem" />
                   </span>

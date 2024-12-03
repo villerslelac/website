@@ -89,7 +89,7 @@ export const Footer: React.FC = () => (
           </ul>
         </div>
         <div className={styles.credit}>
-          <p>Développé par la Mairie de Villers-le-Lac - v3.0.0</p>
+          <p>Développé par la Mairie de Villers-le-Lac - v3.0.1</p>
         </div>
       </div>
     </div>

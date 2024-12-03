@@ -40,6 +40,7 @@ const getReports = async (id: number) => {
         filter: {
           folder: id,
         },
+        sort: ['-date'],
       }),
     );
     return reports;
